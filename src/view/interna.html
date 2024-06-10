@@ -454,25 +454,13 @@
     
   </head>
   <body>
-    
+
     <amp-analytics type="googleanalytics">
       <script type="application/json">
         {
-          "vars": {
-            "account": "UA-XXXXXXX-Y"
-          },
-          "triggers": {
-            "trackPageview": {
-              "on": "visible",
-              "request": "pageview",
-              "vars": {
-                "page": {
-                  "url": "${ampdocUrl}",
-                  "title": "${title}",
-                  "path": "${pathname}"
-                }
-              }
-            }
+          "global": {
+            "pagePath": "${path}",
+            "otherCustomVariable": "value"
           }
         }
       </script>
