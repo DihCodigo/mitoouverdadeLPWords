@@ -68,8 +68,32 @@
   </noscript>
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 </head>
 <body>
+
+  <amp-analytics type="googleanalytics">
+    <script type="application/json">
+      {
+        "vars": {
+          "account": "UA-XXXXXXX-Y"
+        },
+        "triggers": {
+          "trackPageview": {
+            "on": "visible",
+            "request": "pageview",
+            "vars": {
+              "page": {
+                "url": "${ampdocUrl}",
+                "title": "${title}",
+                "path": "${pathname}"
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </amp-analytics>
 
 <amp-script layout="fixed-height" height="100" script="main-script" sandbox="allow-scripts" data-ampdevmode>
   <div id="content">Verifique o console para ver a mensagem.</div>
