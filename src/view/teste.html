@@ -17,26 +17,28 @@
   <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 </head>
 <body>
-  <amp-analytics type="googleanalytics">
+  <amp-analytics type="googleanalytics" id="analytics1">
     <script type="application/json">
       {
         "vars": {
-          "account": "UA-XXXXX-Y"
+          "gtag_id": "UA-XXXXX-Y",
+          "config": {
+            "UA-XXXXX-Y": { "groups": "default" }
+          }
         },
         "triggers": {
           "trackPageview": {
             "on": "visible",
             "request": "pageview",
             "vars": {
-              "title": "${title}",
-              "path": "${path}",
-              "url": "${canonicalUrl}"
+              "page_location": "${canonicalUrl}",
+              "page_path": "${path}",
+              "page_title": "${title}"
             }
           }
         },
         "requests": {
-          "host": "https://www.google-analytics.com",
-          "pageview": "/collect?v=1&_v=j68&aip=1&a=${clientId}&t=pageview&_s=1&dl=${canonicalUrl}&dp=${path}&dt=${title}&sd=24-bit&sr=1366x768&vp=1366x657&je=0&_u=IEBAAEAB~&jid=&gjid=&cid=${clientId}&tid=UA-XXXXX-Y&_gid=&z=${random}"
+          "pageview": "https://www.google-analytics.com/collect?v=1&_v=j68&aip=1&a=${clientId(UA-XXXXX-Y)}&t=pageview&_s=1&dl=${page_location}&dp=${page_path}&dt=${page_title}&sd=24-bit&sr=1366x768&vp=1366x657&je=0&_u=IEBAAEAB~&jid=&gjid=&cid=${clientId(UA-XXXXX-Y)}&tid=UA-XXXXX-Y&_gid=&z=${random}"
         }
       }
     </script>
