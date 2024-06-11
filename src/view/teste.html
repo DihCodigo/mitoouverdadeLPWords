@@ -20,14 +20,25 @@
     <amp-analytics>
       <script type="application/json">
         {
-          "requests": {
-            "pageview": "${pageUrl}"
+          "vars": {
+            "gtag_id": "UA-XXXXX-Y",
+            "config": {
+              "UA-XXXXX-Y": { "groups": "default" }
+            }
           },
           "triggers": {
             "trackPageview": {
               "on": "visible",
-              "request": "pageview"
+              "request": "pageview",
+              "vars": {
+                "page_location": "${canonicalUrl}",
+                "page_path": "${path}",
+                "page_title": "${title}"
+              }
             }
+          },
+          "requests": {
+            "pageview": "https://www.google-analytics.com/collect?v=1&_v=j68&aip=1&a=${clientId(UA-XXXXX-Y)}&t=pageview&_s=1&dl=${page_location}&dp=${page_path}&dt=${page_title}&sd=24-bit&sr=1366x768&vp=1366x657&je=0&_u=IEBAAEAB~&jid=&gjid=&cid=${clientId(UA-XXXXX-Y)}&tid=UA-XXXXX-Y&_gid=&z=${random}"
           }
         }
       </script>
