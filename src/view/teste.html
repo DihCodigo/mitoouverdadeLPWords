@@ -1,60 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html ⚡>
   <head>
     <title>Page Title</title>
+    <meta charset="utf-8" />
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script
       async
       custom-element="amp-analytics"
       src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
     ></script>
     <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-TJPGRF27");
-
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        type: "shoes",
-        color: "red",
-      });
+    <script type="application/json">
+      {
+        "vars": {
+          "type": "shoes",
+          "color": "red"
+        },
+        "requests": {
+          "pageview": "https://www.google-analytics.com/collect?v=1&_v=j68&aip=1&a=${clientId(UA-XXXXX-Y)}&t=pageview&_s=1&dl=${sourceUrl}&dp=${sourcePath}&dt=${title}&sd=24-bit&sr=1366x768&vp=1366x657&je=0&_u=IEBAAEAB~&jid=&gjid=&cid=${clientId(UA-XXXXX-Y)}&tid=UA-XXXXX-Y&_gid=&z=${random}"
+        },
+        "triggers": {
+          "trackPageview": {
+            "on": "visible",
+            "request": "pageview",
+            "vars": {
+              "clientId": "UA-XXXXX-Y"
+            }
+          }
+        }
+      }
     </script>
     <!-- End Google Tag Manager -->
+    <style amp-boilerplate>
+      body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    </style>
+    <noscript>
+      <style amp-boilerplate>
+        body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+      </style>
+    </noscript>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
+    <noscript>
+      <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-TJPGRF27"
         height="0"
         width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <amp-analytics
-      config="https://www.googletagmanager.com/amp.json?id=GTM-TJPGRF27;Tag Manager.url=https://www.googletagmanager.com/gtm.js?id=GTM-TJPGRF27"
-      data-credentials="include"
-    >
-      <script type="application/json ">
-        {
-            "vars" : {
-                "type": "shoes",
-                "color": "red"
-            },
-            "requests": {
-                "pageview": "https://www.google-analytics.com/collect?v=1&_v=j68&aip=1&a=${clientId(UA-XXXXX-Y)}&t=pageview&_s=1&dl=${page_location}&dp=${page_path}&dt=${page_title}&sd=24-bit&sr=1366x768&vp=1366x657&je=0&_u=IEBAAEAB~&jid=&gjid=&cid=${clientId(UA-XXXXX-Y)}&tid=UA-XXXXX-Y&_gid=&z=${random}"
-              }
-            
-        }
-      </script>
+    <amp-analytics type="googleanalytics">
     </amp-analytics>
   </body>
 </html>
