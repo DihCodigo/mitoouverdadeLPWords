@@ -1,50 +1,54 @@
 <!DOCTYPE html>
-<html ⚡>
-<head>
-  <meta charset="utf-8" />
-  <title>My AMP Page</title>
-  <link rel="canonical" href="https://github.com/DihCodigo/mitoouverdadeLPWords"/>
-  <meta name="viewport" content="width=device-width" />
-  <meta name="amp-google-client-id-api" content="googleanalytics">
-  <style amp-boilerplate>
-    body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
-  </style>
-  <noscript>
-    <style amp-boilerplate>
-      body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
-    </style>
-  </noscript>
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-</head>
-<body>
-  <amp-analytics type="googleanalytics">
-    <script type="application/json">
-      {
-        "vars": {
-          "eventName": "customEvent",
-          "eventCategory": "Minha Categoria AMP",
-          "eventAction": "Your Action",
-          "eventLabel": "Your Label",
-          "pagePath": "/your-custom-path"
-        },
-        "triggers": {
-          "trackEvent": {
-            "on": "click",
-            "selector": "#yourElement",
-            "request": "event",
-            "vars": {
-              "eventCategory": "${eventName}",
-              "eventAction": "${eventAction}",
-              "eventLabel": "${eventLabel}",
-              "pagePath": "${pagePath}"
-            }
-          }
-        }
-      }
+<html>
+  <head>
+    <title>Page Title</title>
+    <script
+      async
+      custom-element="amp-analytics"
+      src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
+    ></script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TJPGRF27");
     </script>
-  </amp-analytics>
-  
-  <h1>Hello AMPHTML World!</h1>
-</body>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TJPGRF27"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <amp-analytics
+      config="https://www.googletagmanager.com/amp.json?id=GTM-TJPGRF27;Tag Manager.url=https://www.googletagmanager.com/gtm.js?id=GTM-TJPGRF27"
+      data-credentials="include"
+    >
+      <script type="application/json ">
+        {
+            "vars" : {
+                "type": "shoes",
+                "color": "red"
+            },
+            "requests": {
+                "pageview": "https://www.google-analytics.com/collect?v=1&_v=j68&aip=1&a=${clientId(UA-XXXXX-Y)}&t=pageview&_s=1&dl=${page_location}&dp=${page_path}&dt=${page_title}&sd=24-bit&sr=1366x768&vp=1366x657&je=0&_u=IEBAAEAB~&jid=&gjid=&cid=${clientId(UA-XXXXX-Y)}&tid=UA-XXXXX-Y&_gid=&z=${random}"
+              }
+            
+        }
+      </script>
+    </amp-analytics>
+  </body>
 </html>
