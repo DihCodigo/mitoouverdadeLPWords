@@ -20,17 +20,17 @@
   <amp-analytics type="googleanalytics">
     <script type="application/json">
       {
+        "vars": {
+          "canonicalUrl": "${canonicalUrl}",
+          "canonicalPath": "${canonicalPath}"
+        },
         "requests": {
           "pageview": "https://www.google-analytics.com/collect?v=1&dl=${canonicalUrl}&dp=${canonicalPath}&t=pageview"
         },
         "triggers": {
           "trackPageview": {
             "on": "visible",
-            "request": "pageview",
-            "vars": {
-              "canonicalUrl": "${canonicalUrl}",
-              "canonicalPath": "${canonicalPath}"
-            }
+            "request": "pageview"
           }
         }
       }
