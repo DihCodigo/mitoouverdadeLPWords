@@ -70,13 +70,34 @@
   <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
 </head>
 <body>
-<amp-script layout="fixed-height" height="100" script="main-script" sandbox="allow-scripts" data-ampdevmode>
-  <div id="content">Verifique o console para ver a mensagem.</div>
-</amp-script>
-
-<script id="main-script" type="text/plain" target="amp-script" data-ampdevmode>
-  console.log("Este é um script personalizado carregado em uma página AMP.");
-</script>
+  <amp-analytics>
+    <script type="application/json">
+      {
+        "requests": {
+          "pageview": "${pageUrl}"
+        },
+        "triggers": {
+          "trackPageview": {
+            "on": "visible",
+            "request": "pageview"
+          }
+        }
+      }
+    </script>
+  </amp-analytics>
+  
+  <amp-script layout="fixed-height" height="100" script="main-script" sandbox="allow-scripts" data-ampdevmode>
+    <div id="content">Verifique o console para ver a mensagem.</div>
+  </amp-script>
+  
+  <script id="main-script" type="text/plain" target="amp-script" data-ampdevmode>
+    console.log("Este é um script personalizado carregado em uma página AMP.");
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'pageview',
+      'pageUrl': location.href
+    });
+  </script>
 
 </body>
 </html>
