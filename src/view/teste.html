@@ -21,11 +21,11 @@
     <script type="application/json">
       {
         "vars": {
-          "canonicalUrl": "${canonicalUrl}",
-          "canonicalPath": "${canonicalPath}"
+          "canonicalUrl": "${pageUrl}",
+          "canonicalPath": "${pagePath}"
         },
         "requests": {
-          "pageview": "https://www.google-analytics.com/collect?v=1&dl=${canonicalUrl}&dp=${canonicalPath}&t=pageview"
+          "pageview": "https://www.google-analytics.com/collect?v=1&dl=${pageUrl}&dp=${pagePath}&t=pageview"
         },
         "triggers": {
           "trackPageview": {
