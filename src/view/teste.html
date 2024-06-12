@@ -4,33 +4,7 @@
     <title>Page Title</title>
     <meta charset="utf-8" />
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script
-      async
-      custom-element="amp-analytics"
-      src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
-    ></script>
-    <!-- Google Tag Manager -->
-    <script type="application/json">
-      {
-        "vars": {
-          "type": "shoes",
-          "color": "red"
-        },
-        "requests": {
-          "pageview": "https://www.google-analytics.com/collect?v=1&_v=j68&aip=1&a=${clientId(UA-XXXXX-Y)}&t=pageview&_s=1&dl=${sourceUrl}&dp=${sourcePath}&dt=${title}&sd=24-bit&sr=1366x768&vp=1366x657&je=0&_u=IEBAAEAB~&jid=&gjid=&cid=${clientId(UA-XXXXX-Y)}&tid=UA-XXXXX-Y&_gid=&z=${random}"
-        },
-        "triggers": {
-          "trackPageview": {
-            "on": "visible",
-            "request": "pageview",
-            "vars": {
-              "clientId": "UA-XXXXX-Y"
-            }
-          }
-        }
-      }
-    </script>
-    <!-- End Google Tag Manager -->
+
     <style amp-boilerplate>
       body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
     </style>
@@ -40,6 +14,7 @@
       </style>
     </noscript>
   </head>
+  
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -50,8 +25,6 @@
         style="display:none;visibility:hidden"
       ></iframe>
     </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <amp-analytics type="googleanalytics">
-    </amp-analytics>
+
   </body>
 </html>
