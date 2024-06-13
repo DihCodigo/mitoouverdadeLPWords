@@ -82,13 +82,13 @@
             "config": {
               "G-JR6H1X3BNK": {
                 "groups": "default",
-                "url_override": "https://dihcodigo.github.io/mitoouverdadeLPWords/",
-                "category": "${document.location.pathname.split('/').filter(segment => segment).slice(2, 3)[0] || 'default'}"
+                "url_override": "https://dihcodigo.github.io/mitoouverdadeLPWords/"
               }
             }
           },
           "extraUrlParams": {
-            "page_path": "${canonicalPath}"
+            "page_path": "${canonicalPath}",
+            "category": "${document.location.pathname.split('/').filter(Boolean).slice(-2, -1)[0] || 'default'}"
           },
           "triggers": {
             "trackPageview": {
