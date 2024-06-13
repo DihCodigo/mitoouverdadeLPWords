@@ -73,12 +73,15 @@
   </head>
   <body>
     <h1>Hello AMPHTML World!</h1>
-    
-    <amp-analytics type="googleanalytics">
+
+    <amp-analytics type="gtag">
       <script type="application/json">
         {
           "vars": {
-            "account": "UA-XXXXX-Y"
+            "gtag_id": "G-JR6H1X3BNK",
+            "config": {
+              "G-JR6H1X3BNK": { "groups": "default" }
+            }
           },
           "triggers": {
             "trackPageview": {
