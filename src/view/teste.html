@@ -101,7 +101,7 @@
       <script type="application/json">
         {
           "tags": {
-            "category": "${document.location.pathname.split('/').slice(-2, -1)}"
+            "category": "${document.location.pathname.split('/')[document.location.pathname.split('/').length - 2]}"
           }
         }
       </script>
