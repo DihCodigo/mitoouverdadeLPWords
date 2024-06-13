@@ -88,7 +88,8 @@
           },
           "extraUrlParams": {
             "page_path": "${canonicalPath}",
-            "category": "${document.location.pathname}"
+            "category": "${document.location.pathname.split('/').filter(segment => segment).slice(-2, -1)[0] || 'default'}"
+          },
           },
           "triggers": {
             "trackPageview": {
