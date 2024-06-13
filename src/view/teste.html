@@ -88,20 +88,13 @@
           },
           "extraUrlParams": {
             "page_path": "${canonicalPath}",
-            "category": "${category}"
+            "category": "${document.location.pathname.split('/')[document.location.pathname.split('/').length - 2]}"
           },
           "triggers": {
             "trackPageview": {
               "on": "visible",
               "request": "pageview"
             }
-          }
-        }
-      </script>
-      <script type="application/json">
-        {
-          "tags": {
-            "category": "${document.location.pathname.split('/')[document.location.pathname.split('/').length - 2]}"
           }
         }
       </script>
