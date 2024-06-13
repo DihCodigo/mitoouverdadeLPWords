@@ -81,15 +81,13 @@
             "gtag_id": "G-JR6H1X3BNK",
             "config": {
               "G-JR6H1X3BNK": {
-                "groups": "default",
-                "url_override": "https://dihcodigo.github.io/mitoouverdadeLPWords/",
-                "category": "${document.location.pathname.split('/').slice(-2)[0] || 'default'}"
+                "groups": "default"
               }
             }
           },
           "extraUrlParams": {
             "page_path": "${canonicalPath}",
-            "category": "category": "${pathSegment:-2}"
+            "category": "${pathSegment:-1}"
           },
           "triggers": {
             "trackPageview": {
@@ -100,5 +98,6 @@
         }
       </script>
     </amp-analytics>
+    
   </body>
 </html>
