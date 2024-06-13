@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>My AMP Page</title>
-    <link rel="canonical" href="self.html" />
+    <link rel="canonical" href="https://dihcodigo.github.io/mitoouverdadeLPWords/" />
     <meta name="viewport" content="width=device-width" />
     <style amp-boilerplate>
       body {
@@ -74,7 +74,7 @@
   <body>
     <h1>Hello AMPHTML World!</h1>
 
-    <amp-analytics type="gtag">
+    <amp-analytics type="gtag" data-credentials="include">
       <script type="application/json">
         {
           "vars": {
@@ -82,14 +82,12 @@
             "config": {
               "G-JR6H1X3BNK": {
                 "groups": "default",
-                "custom_map": {
-                  "dimension1": "page_path"
-                }
+                "url_override": "https://dihcodigo.github.io/mitoouverdadeLPWords/"
               }
             }
           },
           "extraUrlParams": {
-            "page_path": "{{DOCUMENT_LOCATION}}"
+            "page_path": "{{PATH}}"
           },
           "triggers": {
             "trackPageview": {
