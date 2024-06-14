@@ -1,110 +1,111 @@
 <!DOCTYPE html>
 <html ⚡>
-  <head>
-    <meta charset="utf-8" />
-    <title>My AMP Page</title>
-    <link rel="canonical" href="https://dihcodigo.github.io/mitoouverdadeLPWords/src/view/teste.html" />
-
-    <!-- AMP Analytics --><script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-    <meta name="viewport" content="width=device-width" />
+<head>
+  <meta charset="utf-8" />
+  <title>My AMP Page</title>
+  <link rel="canonical" href="https://dihcodigo.github.io/mitoouverdadeLPWords/src/view/teste.html" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+    }
+    @-webkit-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+      to {
+        visibility: visible;
+      }
+    }
+    @-moz-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+      to {
+        visibility: visible;
+      }
+    }
+    @-ms-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+      to {
+        visibility: visible;
+      }
+    }
+    @-o-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+      to {
+        visibility: visible;
+      }
+    }
+    @keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+      to {
+        visibility: visible;
+      }
+    }
+  </style>
+  <noscript>
     <style amp-boilerplate>
       body {
-        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-        animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-      }
-      @-webkit-keyframes -amp-start {
-        from {
-          visibility: hidden;
-        }
-        to {
-          visibility: visible;
-        }
-      }
-      @-moz-keyframes -amp-start {
-        from {
-          visibility: hidden;
-        }
-        to {
-          visibility: visible;
-        }
-      }
-      @-ms-keyframes -amp-start {
-        from {
-          visibility: hidden;
-        }
-        to {
-          visibility: visible;
-        }
-      }
-      @-o-keyframes -amp-start {
-        from {
-          visibility: hidden;
-        }
-        to {
-          visibility: visible;
-        }
-      }
-      @keyframes -amp-start {
-        from {
-          visibility: hidden;
-        }
-        to {
-          visibility: visible;
-        }
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        animation: none;
       }
     </style>
-    <noscript>
-      <style amp-boilerplate>
-        body {
-          -webkit-animation: none;
-          -moz-animation: none;
-          -ms-animation: none;
-          animation: none;
-        }
-      </style>
-    </noscript>
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  </noscript>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <!-- Inclua o código do Google Tag Manager no cabeçalho -->
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <style amp-custom>
+    h1 {
+      margin: 1rem;
+    }
+  </style>
+  <!-- Configuração do Google Tag Manager -->
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+</head>
+<body>
+  <!-- Google Tag Manager -->
+  <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KN9K8MVS" data-credentials="include"></amp-analytics>
 
-      h1 {
-        margin: 1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Google Tag Manager -->
-<amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KN9K8MVS&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
+  <h1>Hello AMPHTML World!</h1>
 
-
-    <h1>Hello AMPHTML World!</h1>
-
-    <amp-analytics type="gtag" data-credentials="include">
-      <script type="application/json">
-        {
-          "vars": {
-            "gtag_id": "G-JR6H1X3BNK",
-            "config": {
-              "G-JR6H1X3BNK": {
-                "groups": "default"
-              }
-            }
-          },
-          "extraUrlParams": {
-            "page_path": "${canonicalPath}",
-            "category": "${pathSegment(2)}",
-            "valorTeste": "${title}"
-          },
-          "triggers": {
-            "trackPageview": {
-              "on": "visible",
-              "request": "pageview"
+  <!-- AMP Analytics (gtag) -->
+  <amp-analytics type="gtag" data-credentials="include">
+    <script type="application/json">
+      {
+        "vars": {
+          "gtag_id": "G-JR6H1X3BNK",
+          "config": {
+            "G-JR6H1X3BNK": {
+              "groups": "default"
             }
           }
+        },
+        "extraUrlParams": {
+          "page_path": "${canonicalPath}",
+          "category": "${pathSegment(2)}",
+          "valorTeste": "${title}"
+        },
+        "triggers": {
+          "trackPageview": {
+            "on": "visible",
+            "request": "pageview"
+          }
         }
-      </script>
-    </amp-analytics>
-    
-  </body>
+      }
+    </script>
+  </amp-analytics>
+</body>
 </html>
