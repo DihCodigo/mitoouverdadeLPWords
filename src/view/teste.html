@@ -84,16 +84,6 @@
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager -->
-  <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KN9K8MVS" data-credentials="include"></amp-analytics>
-
-  <amp-iframe width="1" title="User Sync" height="1" sandbox="allow-scripts" frameborder="0"
-    src="https://acdn.adnxs.com/prebid/amp/user-sync/load-cookie.html?
-    endpoint=appnexus&max_sync_count=5"><amp-img layout="fill"
-    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-    placeholder></amp-img></amp-iframe>
-
-
   <h1>Hello AMPHTML World!</h1>
 
   <!-- AMP Analytics (gtag) -->
@@ -110,8 +100,7 @@
         },
         "extraUrlParams": {
           "page_path": "${canonicalPath}",
-          "category": "${pathSegment(2)}",
-          "valorTeste": "${title}"
+          "category": "${pathSegment(2)}"
         },
         "triggers": {
           "trackPageview": {
@@ -123,23 +112,5 @@
     </script>
   </amp-analytics>
 
-  <!-- AMP | ROS -->
-<amp-ad id = "amp-1"
-  width="300"
-  height="250"
-  type="doubleclick"
-  data-loading-strategy="1.25"
-  data-enable-refresh="60"
-  data-multi-size="300x50,300x250"
-  data-slot="/193858494/emtempo/amp/amp_article_300x250_top"
-  data-multi-size-validation="false"
-  rtc-config='{"vendors": {"prebidappnexus": {"PLACEMENT_ID": "19344679"},"criteo":{"NETWORK_ID":"10243"}}, "timeoutMillis": 800}'>
-  </amp-ad>
-
-  <!-- AMP | bottom_stickyad -->
-  <amp-sticky-ad layout="nodisplay">
-    <amp-ad width="320" height="100" type="doubleclick" data-slot="7542/parceiros/ovicio">
-    </amp-ad>
-  </amp-sticky-ad>
 </body>
 </html>
