@@ -37,61 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         storeLocally(logMessage);
     }
     
-    function getAdPosition(adUnitId) {
-        const adContainer = document.getElementById(adUnitId);
-        const rect = adContainer.getBoundingClientRect();
-        return `Top: ${rect.top}, Left: ${rect.left}, Width: ${rect.width}, Height: ${rect.height}`;
-    }
-    
-    function sendToAnalytics(adUnitId, isIntersecting) {
-        const timestamp = new Date().toISOString();
-        const eventData = {
-            adUnitId: adUnitId,
-            isVisible: isIntersecting,
-            timestamp: timestamp,
-            event_category: 'Ad Viewability',
-            event_label: `Viewability - AdUnit: ${adUnitId}, Status: ${isIntersecting ? 'Visible' : 'Not Visible'}, Timestamp: ${timestamp}`,
-            event_value: isIntersecting ? 1 : 0,
-            page_referrer: document.referrer
-        };
-
-        gtag('event', 'ad_viewability', {
-            event_category: 'Ad Viewability',
-            event_label: eventData.event_label,
-            value: eventData.event_value,
-            ad_unit_id: adUnitId,
-            visibility_status: isIntersecting ? 'Visible' : 'Not Visible',
-            event_timestamp: timestamp,
-            page_referrer: document.referrer
-        });
-    
-        console.log('Dados enviados para análise:', eventData);
-    }
-    
-    (function() {
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JR6H1X3BNK';
-        document.head.appendChild(script);
-    
-        script.onload = function() {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            window.gtag = gtag;
-    
-            gtag('js', new Date());
-            gtag('config', 'G-JR6H1X3BNK');
-        };
-    })();
-    
-    
-    function storeLocally(data) {
-        localStorage.setItem('viewabilityLog', data);
-    }
-    
-
     function initializeAd(adUnitId) {
         const adContainer = document.getElementById(adUnitId);
         let adRefreshInterval;
@@ -164,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         defineAdSlot();
                     }
                     startAdRefresh();
-                    displayAd(); // Exibe o anúncio quando o slot estiver definido e o serviço habilitado
+                    displayAd();
                 } else {
                     stopAdRefresh();
                 }
