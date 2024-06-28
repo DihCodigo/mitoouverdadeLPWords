@@ -1,0 +1,11 @@
+<!--
+        Adicionar o Código ao functions.php:
+        Abra o arquivo functions.php do seu tema.
+        Adicione o seguinte código ao final do arquivo ou em uma posição apropriada:
+
+        function enqueue_ad_script() {
+            wp_enqueue_script('google-ads', 'https://securepubads.g.doubleclick.net/tag/js/gpt.js', array(), null, true);
+            wp_enqueue_script('ad-script', get_template_directory_uri() . '/js/ad-script.js', array('google-ads'), null, true);
+        }
+        add_action('wp_enqueue_scripts', 'enqueue_ad_script');
+-->
