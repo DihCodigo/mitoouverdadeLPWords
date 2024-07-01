@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     const adUnitIds = [
         "r7_header", "r7_texto_1", "r7_texto_2", "r7_texto_3", "r7_texto_4", "r7_retangulo_lateral_1", 
         "r7_retangulo_lateral_2", "r7_retangulo_lateral_3", "r7_sticky_lateral", "r7_stickybottom"
@@ -27,42 +27,26 @@ document.addEventListener('DOMContentLoaded', function() {
     function trackViewability(adUnitId, isIntersecting) {
         const timestamp = new Date().toISOString();
         const viewportSize = `${window.innerWidth}x${window.innerHeight}`;
-        const adPosition = getAdPosition(adUnitId);
         const visibilityStatus = isIntersecting ? 'Visible' : 'Not Visible';
-        
-        const logMessage = `Viewability - AdUnit: ${adUnitId}, Status: ${visibilityStatus}, Timestamp: ${timestamp}, Viewport Size: ${viewportSize}, Ad Position: ${adPosition}`;
+        const logMessage = `Viewability - AdUnit: ${adUnitId}, Status: ${visibilityStatus}, Timestamp: ${timestamp}, Viewport Size: ${viewportSize}`;
         
         sendToAnalytics(logMessage);
-        
         storeLocally(logMessage);
     }
-    
-    function getAdPosition(adUnitId) {
-        const adContainer = document.getElementById(adUnitId);
-        const rect = adContainer.getBoundingClientRect();
-        return `Top: ${rect.top}, Left: ${rect.left}, Width: ${rect.width}, Height: ${rect.height}`;
-    }
+
     
     function sendToAnalytics(adUnitId, isIntersecting) {
-        const timestamp = new Date().toISOString();
         const eventData = {
             adUnitId: adUnitId,
-            isVisible: isIntersecting,
-            timestamp: timestamp,
             event_category: 'Ad Viewability',
-            event_label: `Viewability - AdUnit: ${adUnitId}, Status: ${isIntersecting ? 'Visible' : 'Not Visible'}, Timestamp: ${timestamp}`,
             event_value: isIntersecting ? 1 : 0,
-            page_referrer: document.referrer
         };
 
         gtag('event', 'ad_viewability', {
             event_category: 'Ad Viewability',
-            event_label: eventData.event_label,
             value: eventData.event_value,
             ad_unit_id: adUnitId,
             visibility_status: isIntersecting ? 'Visible' : 'Not Visible',
-            event_timestamp: timestamp,
-            page_referrer: document.referrer
         });
     
         console.log('Dados enviados para análise:', eventData);
@@ -80,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 dataLayer.push(arguments);
             }
             window.gtag = gtag;
-    
             gtag('js', new Date());
             gtag('config', 'G-JR6H1X3BNK');
         };
@@ -94,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initializeAd(adUnitId) {
         const adContainer = document.getElementById(adUnitId);
+        
         let adRefreshInterval;
         let debugInterval;
         let elapsedSeconds = 0;
@@ -164,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         defineAdSlot();
                     }
                     startAdRefresh();
-                    displayAd(); // Exibe o anúncio quando o slot estiver definido e o serviço habilitado
+                    displayAd();
                 } else {
                     stopAdRefresh();
                 }
@@ -173,4 +157,4 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(adContainer);
     }
     adUnitIds.forEach(initializeAd);
-});
+});*/
