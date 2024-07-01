@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', function() {
     const adUnitIds = [
         "r7_header", "r7_texto_1", "r7_texto_2", "r7_texto_3", "r7_texto_4", "r7_retangulo_lateral_1", 
@@ -118,4 +119,4 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(adContainer);
     }
     adUnitIds.forEach(initializeAd);
-});
+});*/
