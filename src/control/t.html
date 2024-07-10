@@ -94,7 +94,7 @@
       // Button action which refreshes all slots
       function refreshAllSlots() {
         googletag.cmd.push(() => {
-          googletag.pubads().refresh();
+          googletag.pubads().refresh([googleFormats[i][2]]);
           refreshCount1++;
           refreshCount2++;
           console.log(`All slots refreshed. First slot: ${refreshCount1} times, Second slot: ${refreshCount2} times`);
