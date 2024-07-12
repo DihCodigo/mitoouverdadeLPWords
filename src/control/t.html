@@ -46,7 +46,7 @@
       let adSlot1;
       let adSlot2;
 
-      let refreshCount1 = 0;
+      let refreshCount = 0;
       let refreshCount2 = 0;
 
       googletag.cmd.push(() => {
@@ -95,14 +95,54 @@
       function refreshAllSlots() {
         googletag.cmd.push(() => {
           googletag.pubads().refresh([googleFormats[i][2]]);
-          refreshCount1++;
-          refreshCount2++;
+          refreshCount++;
           console.log(`All slots refreshed. First slot: ${refreshCount1} times, Second slot: ${refreshCount2} times`);
         });
       }
 
       // Set interval to refresh all slots every 10 seconds
       setInterval(refreshAllSlots, 10000);
+
+
+           
+   //pbjs config
+   pbjs.addAdUnits(adUnits);
+   pbjs.requestBids({
+     bidsBackHandler: function () {
+          pbjs.setTargetingForGPTAsync();
+          googletag.cmd.push(function() {
+            googletag.pubads().refresh();
+          });
+        }
+     });
+   
+   var _counter = _timeRefresh;
+   function refreshAds() {
+     googletag.cmd.push(function () {
+       pbjs.requestBids({
+            bidsBackHandler: function () {
+              pbjs.setTargetingForGPTAsync();
+                 googletag.pubads().refresh();
+                 console.log("Anúncios atualizados");
+                 _counter = _timeRefresh;
+              }
+          });
+     });
+   }
+      
+   function updateCounter() {
+      console.log("Próximo refresh em " + _counter + " segundos");
+      _counter--;
+      if (_counter < 0) {
+        _counter = _timeRefresh;
+        refreshAds();
+      }
+    }
+    var _interval = setInterval(updateCounter, 1000);
+      
+    //_refreshInterval = setInterval(refreshAds, _timeRefresh * 1000);
+     
+   // pbjs end
     </script>
     <style></style>
   </head>
