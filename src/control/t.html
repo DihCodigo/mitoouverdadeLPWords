@@ -1,162 +1,308 @@
-<!--
-        Adicionar o Código ao functions.php:
-        Abra o arquivo functions.php do seu tema.
-        Adicione o seguinte código ao final do arquivo ou em uma posição apropriada:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script async type="text/javascript" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+</head>
 
-        function enqueue_ad_script() {
-            wp_enqueue_script('google-ads', 'https://securepubads.g.doubleclick.net/tag/js/gpt.js', array(), null, true);
-            wp_enqueue_script('ad-script', get_template_directory_uri() . '/js/ad-script.js', array('google-ads'), null, true);
-        }
-        add_action('wp_enqueue_scripts', 'enqueue_ad_script');
--->
+<body>
+  <br>
 
-<!doctype html>
-<!--
- @license
- Copyright 2022 Google LLC. All Rights Reserved.
- SPDX-License-Identifier: Apache-2.0
--->
-<!doctype html>
-<!--
- @license
- Copyright 2022 Google LLC. All Rights Reserved.
- SPDX-License-Identifier: Apache-2.0
--->
-<!doctype html>
-<!--
- @license
- Copyright 2022 Google LLC. All Rights Reserved.
- SPDX-License-Identifier: Apache-2.0
--->
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Use GPT to dynamically reload ads." />
-    <title>Refresh ad slots</title>
-    <script
-      async
-      src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
-      crossorigin="anonymous"
-    ></script>
+  ### DESKTOP ###
+
+  #1 DESKTOP 970x250
+  <div id="r7_header-1_desktop">
     <script>
-      window.googletag = window.googletag || { cmd: [] };
-
-      let adSlot1;
-      let adSlot2;
-
-      let refreshCount = 0;
-      let refreshCount2 = 0;
-
-      googletag.cmd.push(() => {
-        // Define the first slot.
-        adSlot1 = googletag
-          .defineSlot("/6355419/Travel", [728, 90], "leaderboard1")
-          .setTargeting("test", "refresh")
-          .addService(googletag.pubads());
-
-        // Define the second slot.
-        adSlot2 = googletag
-          .defineSlot("/6355419/Travel", [728, 90], "leaderboard2")
-          .setTargeting("test", "refresh")
-          .addService(googletag.pubads());
-
-        // Enable SRA and services.
-        googletag.pubads().enableSingleRequest();
-        
-        // Enable lazy loading
-        googletag.pubads().enableLazyLoad({
-          fetchMarginPercent: 200,
-          renderMarginPercent: 50,
-          mobileScaling: 2.0 
-        });
-
-        googletag.enableServices();
-      });
-
-      function refreshFirstSlot() {
-        googletag.cmd.push(() => {
-          googletag.pubads().refresh([adSlot1]);
-          refreshCount1++;
-          console.log(`First slot refreshed ${refreshCount1} times`);
-        });
-      }
-
-      function refreshSecondSlot() {
-        googletag.cmd.push(() => {
-          googletag.pubads().refresh([adSlot2]);
-          refreshCount2++;
-          console.log(`Second slot refreshed ${refreshCount2} times`);
-        });
-      }
-
-      // Button action which refreshes all slots
-      function refreshAllSlots() {
-        googletag.cmd.push(() => {
-          googletag.pubads().refresh([googleFormats[i][2]]);
-          refreshCount++;
-          console.log(`All slots refreshed. First slot: ${refreshCount1} times, Second slot: ${refreshCount2} times`);
-        });
-      }
-
-      // Set interval to refresh all slots every 10 seconds
-      setInterval(refreshAllSlots, 10000);
-
-
-           
-   //pbjs config
-   pbjs.addAdUnits(adUnits);
-   pbjs.requestBids({
-     bidsBackHandler: function () {
-          pbjs.setTargetingForGPTAsync();
-          googletag.cmd.push(function() {
-            googletag.pubads().refresh();
+      if (window.innerWidth > 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [[970, 250]],
+                "r7_header-1_desktop"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
           });
-        }
-     });
-   
-   var _counter = _timeRefresh;
-   function refreshAds() {
-     googletag.cmd.push(function () {
-       pbjs.requestBids({
-            bidsBackHandler: function () {
-              pbjs.setTargetingForGPTAsync();
-                 googletag.pubads().refresh();
-                 console.log("Anúncios atualizados");
-                 _counter = _timeRefresh;
-              }
-          });
-     });
-   }
-      
-   function updateCounter() {
-      console.log("Próximo refresh em " + _counter + " segundos");
-      _counter--;
-      if (_counter < 0) {
-        _counter = _timeRefresh;
-        refreshAds();
+          googletag.display("r7_header-1_desktop");
+        });
       }
-    }
-    var _interval = setInterval(updateCounter, 1000);
-      
-    //_refreshInterval = setInterval(refreshAds, _timeRefresh * 1000);
-     
-   // pbjs end
     </script>
-    <style></style>
-  </head>
-  <body>
-    <div>
-      <h1>GPT Training - Slot Refresh</h1>
-      <div id="leaderboard1" style="width: 728px; height: 90px"></div>
-      <div id="leaderboard2" style="width: 728px; height: 90px"></div>
-    </div>
+  </div>
+
+  #2 DESKTOP 970x250
+  <div id="r7_header-2_desktop">
     <script>
+      if (window.innerWidth > 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [[970, 250]],
+                "r7_header-2_desktop"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+          googletag.display("r7_header-2_desktop");
+        });
+      }
+    </script>
+  </div>
+
+  #3 DESKTOP 300x250/300x600
+  <div id="r7_texto-3_desktop">
+    <script>
+      if (window.innerWidth > 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [
+                  [300, 250],
+                  [300, 600],
+                ],
+                "r7_texto-3_desktop"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+          googletag.display("r7_texto-3_desktop");
+        });
+      }
+    </script>
+  </div>
+
+  #4 DESKTOP 300x250
+  <div id="r7_texto-4_desktop">
+    <script>
+      if (window.innerWidth > 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [[300, 250]],
+                "r7_texto-4_desktop"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+          googletag.display("r7_texto-4_desktop");
+        });
+      }
+    </script>
+  </div>
+
+  #5 DESKTOP 300x250
+  <div id="r7_texto-5_desktop">
+    <script>
+      if (window.innerWidth > 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [[300, 250]],
+                "r7_texto-5_desktop"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+          googletag.display("r7_texto-5_desktop");
+        });
+      }
+    </script>
+  </div>
+
+  #6 DESKTOP 300x600
+  <div id="r7_texto-6_desktop">
+    <script>
+      if (window.innerWidth <= 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [
+                  [300, 600]
+                ],
+                "r7_texto-6_desktop"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+          googletag.display("r7_texto-6_desktop");
+        });
+      }
+    </script>
+  </div>
+  <br>
+### MOBILE ###
+
+#1 MOBILE 320x50
+<div id="r7_header-1_mobile">
+  <script>
+    if (window.innerWidth <= 768) {
       googletag.cmd.push(function () {
-        googletag.display("leaderboard1");
-        googletag.display("leaderboard2");
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function () {
+          googletag
+            .defineSlot(
+              "/7542,23183941083/parceiros/anamariabrogui",
+              [[320, 50]],
+              "r7_header-1_mobile"
+            )
+            .addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+        googletag.display("r7_header-1_mobile");
       });
+    }
+  </script>
+</div>
+
+#2 MOBILE 320x50
+<div id="r7_header-2_mobile">
+  <script>
+    if (window.innerWidth <= 768) {
+      googletag.cmd.push(function () {
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function () {
+          googletag
+            .defineSlot(
+              "/7542,23183941083/parceiros/anamariabrogui",
+              [[320, 50]],
+              "r7_header-2_mobile"
+            )
+            .addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+        googletag.display("r7_header-2_mobile");
+      });
+    }
+  </script>
+</div>
+
+#3 MOBILE 320x50
+<div id="r7_header-3_mobile">
+  <script>
+    if (window.innerWidth <= 768) {
+      googletag.cmd.push(function () {
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function () {
+          googletag
+            .defineSlot(
+              "/7542,23183941083/parceiros/anamariabrogui",
+              [[320, 50]],
+              "r7_header-3_mobile"
+            )
+            .addService(googletag.pubads());
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        });
+        googletag.display("r7_header-3_mobile");
+      });
+    }
+  </script>
+</div>
+
+
+#4 MOBILE 300x250/300x600
+  <div id="r7_texto-3_mobile">
+    <script>
+      if (window.innerWidth <= 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [
+                  [300, 250],
+                  [300, 600],
+                ],
+                "r7_texto-3_mobile"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+          googletag.display("r7_texto-3_mobile");
+        });
+      }
     </script>
-  </body>
+  </div>
+
+  #5 MOBILE 300x250
+  <div id="r7_texto-5_mobile">
+    <script>
+      if (window.innerWidth <= 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [
+                  [300, 250]
+                ],
+                "r7_texto-5_mobile"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+          googletag.display("r7_texto-5_mobile");
+        });
+      }
+    </script>
+  </div>
+
+  #6 MOBILE 300x600
+  <div id="r7_texto-6_mobile">
+    <script>
+      if (window.innerWidth <= 768) {
+        googletag.cmd.push(function () {
+          window.googletag = window.googletag || { cmd: [] };
+          googletag.cmd.push(function () {
+            googletag
+              .defineSlot(
+                "/7542,23183941083/parceiros/anamariabrogui",
+                [
+                  [300, 600]
+                ],
+                "r7_texto-6_mobile"
+              )
+              .addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+          googletag.display("r7_texto-6_mobile");
+        });
+      }
+    </script>
+  </div>
+
+
+</body>
 </html>
