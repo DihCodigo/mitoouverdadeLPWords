@@ -1,8 +1,4 @@
-//<script async src="https://tpc.googlesyndication.com/pimgad/11651232775554394622"></script>
-//<!-- GPT Tag Library -->
-//<script async type="text/javascript" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-//<script>
-function carregaAD() {
+function cargarAD() {
     var googletag = window.googletag || { cmd: [] };
     var pbjs = window.pbjs || { que: [] };
     var divsCompletas = document.querySelectorAll('[id^="googleAd"]');
@@ -11,14 +7,25 @@ function carregaAD() {
     divsCompletas.forEach(function(div) {
         var targetingValue = JSON.parse(div.getAttribute('data-targeting'));
         var posValue = targetingValue[1][0];
-        var sizes = [[300, 250]];
+        var sizes = [];
+        var isMobile = window.innerWidth <= 768;
 
-        if (div.id === "googleAd" || posValue === "usFullsupH1") {
-            sizes = [[300, 250]];
-        } else if (div.id === "googleAd" || posValue === "usFullsupH2") {
-            sizes = [[728, 90]];
-        } else if (div.id === "googleAd" || posValue === "usFullsupH3") {
-            sizes = [[728, 90]];
+        if (isMobile) {
+            if (div.id === "googleAd" || posValue === "usFullsupH1") {
+                sizes = [[320, 50]];
+            } else if (div.id === "googleAd" || posValue === "usFullsupH2") {
+                sizes = [[320, 50]];
+            } else if (div.id === "googleAd" || posValue === "usFullsupH3") {
+                sizes = [[300, 250]];
+            }
+        } else {
+            if (div.id === "googleAd" || posValue === "usFullsupH1") {
+                sizes = [[970, 250]];
+            } else if (div.id === "googleAd" || posValue === "usFullsupH2") {
+                sizes = [[728, 90]];
+            } else if (div.id === "googleAd" || posValue === "usFullsupH3") {
+                sizes = [[300, 250]];
+            }
         }
 
         adUnits.push({
@@ -155,4 +162,4 @@ function carregaAD() {
     setInterval(refreshAds, 30000);
 }
 
-window.addEventListener('load', carregaAD);
+window.addEventListener('load', cargarAD);
