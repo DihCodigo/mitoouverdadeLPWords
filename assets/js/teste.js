@@ -1,26 +1,23 @@
 //<script async src="https://tpc.googlesyndication.com/pimgad/11651232775554394622"></script>
+//<!-- GPT Tag Library -->
 //<script async type="text/javascript" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+//<script>
 function carregaAD() {
     var googletag = window.googletag || { cmd: [] };
     var pbjs = window.pbjs || { que: [] };
-
     var divsCompletas = document.querySelectorAll('[id^="googleAd"]');
-    console.log("Número de divs encontradas:", divsCompletas.length);
-
     var adUnits = [];
+  
     divsCompletas.forEach(function(div) {
         var targetingValue = JSON.parse(div.getAttribute('data-targeting'));
-        console.log("Div ID:", div.id);
-        console.log("Targeting Value:", targetingValue);
-
         var posValue = targetingValue[1][0];
         var sizes = [[300, 250]];
 
-        if (div.id === "googleAd1" || posValue === "usFullsupH1") {
+        if (div.id === "googleAd" || posValue === "usFullsupH1") {
             sizes = [[300, 250]];
-        } else if (div.id === "googleAd2" || posValue === "usFullsupH2") {
+        } else if (div.id === "googleAd" || posValue === "usFullsupH2") {
             sizes = [[728, 90]];
-        } else if (div.id === "googleAd3" || posValue === "usFullsupH3") {
+        } else if (div.id === "googleAd" || posValue === "usFullsupH3") {
             sizes = [[728, 90]];
         }
 
@@ -55,10 +52,6 @@ function carregaAD() {
                     });
 
                     if (format) {
-                        console.log("Formato encontrado:");
-                        console.log("-> ID: ", div.id);
-                        console.log("-> Posição: ", format.mediaTypes.banner.pos);
-
                         googletag.cmd.push(function () {
                             var slot = googletag
                                 .defineSlot(
@@ -96,11 +89,9 @@ function carregaAD() {
                 mobileScaling: 2.0 
             });
             googletag.pubads().addEventListener('slotRequested', function(event) {
-                console.log('Espaço de anúncio solicitado:', event.slot.getSlotElementId());
             });
 
             googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-                console.log('A renderização do local do anúncio foi encerrada:', event.slot.getSlotElementId(), 'está vazia:', event.isEmpty);
             });
         });
     });
@@ -122,7 +113,6 @@ function carregaAD() {
         divsCompletas.forEach(function(div) {
             if (isElementInViewport(div)) {
                 if (!visibleAds.has(div.id)) {
-                    console.log('Solicitando anúncio para: ' + div.id);
                     googletag.cmd.push(function () {
                         googletag.display(div.id);
                     });
