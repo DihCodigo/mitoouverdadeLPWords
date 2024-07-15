@@ -1,6 +1,6 @@
+//<script async src="https://tpc.googlesyndication.com/pimgad/11651232775554394622"></script>
+//<script async type="text/javascript" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
 function carregaAD() {
-    console.log("Iniciando carregaAD...");
-
     var googletag = window.googletag || { cmd: [] };
     var pbjs = window.pbjs || { que: [] };
 
@@ -68,12 +68,8 @@ function carregaAD() {
                                 )
                                 .addService(googletag.pubads());
 
-                            googletag.enableServices();
-                            googletag.display(div.id);
-                            console.log("Anúncio exibido para:", div.id);
+                            slot.setTargeting('pos', format.mediaTypes.banner.pos);
                         });
-                    } else {
-                        console.log("Nenhum formato correspondente encontrado para", posValue);
                     }
                 });
 
@@ -87,20 +83,86 @@ function carregaAD() {
         pbjs.initAdserverSet = true;
         googletag.cmd.push(function() {
             pbjs.setTargetingForGPTAsync();
+            googletag.enableServices();
             googletag.pubads().refresh();
         });
     }
 
-    // Esperar pelo Prebid antes de habilitar os serviços GPT
     pbjs.que.push(function() {
         googletag.cmd.push(function () {
-            pbjs.setTargetingForGPTAsync();
-            googletag.enableServices();
-            console.log("GPT Services Enabled");
+            googletag.pubads().enableLazyLoad({
+                fetchMarginPercent: 200,
+                renderMarginPercent: 50,
+                mobileScaling: 2.0 
+            });
+            googletag.pubads().addEventListener('slotRequested', function(event) {
+                console.log('Espaço de anúncio solicitado:', event.slot.getSlotElementId());
+            });
+
+            googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                console.log('A renderização do local do anúncio foi encerrada:', event.slot.getSlotElementId(), 'está vazia:', event.isEmpty);
+            });
         });
     });
 
-    console.log("carregaAD finalizado.");
+    var visibleAds = new Set();
+
+    function isElementInViewport(el) {
+        var rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function requestAdsInViewport() {
+        var divsCompletas = document.querySelectorAll('[id^="googleAd"]');
+        divsCompletas.forEach(function(div) {
+            if (isElementInViewport(div)) {
+                if (!visibleAds.has(div.id)) {
+                    console.log('Solicitando anúncio para: ' + div.id);
+                    googletag.cmd.push(function () {
+                        googletag.display(div.id);
+                    });
+                    visibleAds.add(div.id);
+                }
+            } else {
+                visibleAds.delete(div.id);
+            }
+        });
+    }
+
+    function refreshAds() {
+        var slots = [];
+        divsCompletas.forEach(function(div) {
+            if (isElementInViewport(div)) {
+                var slot = googletag.pubads().getSlots().find(function(slot) {
+                    return slot.getSlotElementId() === div.id;
+                });
+                if (slot) {
+                    slots.push(slot);
+                }
+            }
+        });
+
+        if (slots.length > 0) {
+            pbjs.requestBids({
+                adUnits: adUnits,
+                bidsBackHandler: function() {
+                    pbjs.setTargetingForGPTAsync();
+                    googletag.pubads().refresh(slots);
+                }
+            });
+        }
+    }
+
+    window.addEventListener('scroll', requestAdsInViewport);
+    window.addEventListener('resize', requestAdsInViewport);
+    window.addEventListener('load', requestAdsInViewport);
+
+    setInterval(refreshAds, 30000);
 }
 
 window.addEventListener('load', carregaAD);
