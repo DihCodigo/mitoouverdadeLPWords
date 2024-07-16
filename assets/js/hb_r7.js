@@ -165,7 +165,11 @@ function carregarAD() {
                     googletag.pubads().refresh(slots);
 
                     //DEBUG
-                    console.log("Atualização de anuncios: ", slots.map(slot => slot.getSlotElementId()));
+                    function getSlotElementId(slot) {
+                        return slot.getSlotElementId();
+                    }
+                    
+                    console.log("Atualização de anuncios: ", slots.map(getSlotElementId));
                 }
             });
         }
