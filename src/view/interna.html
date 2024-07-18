@@ -557,8 +557,52 @@
               indivíduos maliciosos que possam tentar acessar as suas contas.
             </p>
             <div style="margin: 0 auto;text-align: center;display: flex;justify-content: center;">
-              <amp-ad width="300" height="250" type="doubleclick" data-slot="/21692678505/ros_canalrural"></amp-ad>
+                <amp-ad width="300" height="250"
+                type="doubleclick"
+                data-slot="/21692678505/ros_canalrural">
+                <script type="application/json">
+                  {
+                    "targeting": {
+                      "category": "${pathSegment(2)}"
+                    }
+                  }
+                </script>
+                <amp-ad-rtc-config
+                  rtc-config='{
+                    "vendors": {
+                      "gpt": {
+                        "PARAMS": {
+                          "category": "${pathSegment(2)}"
+                        }
+                      }
+                    }
+                  }'>
+                </amp-ad-rtc-config>
+              </amp-ad>
             </div>
+
+            <amp-ad width="300" height="250"
+              type="doubleclick"
+              data-slot="/21692678505/ros_canalrural">
+              <script type="application/json">
+                {
+                  "targeting": {
+                    "category": "${pathSegment(2)}"
+                  }
+                }
+              </script>
+              <amp-ad-rtc-config
+                rtc-config='{
+                  "vendors": {
+                    "gpt": {
+                      "PARAMS": {
+                        "category": "${pathSegment(2)}"
+                      }
+                    }
+                  }
+                }'>
+              </amp-ad-rtc-config>
+            </amp-ad>
             
             <p>
               Para esclarecer se utilizar uma senha forte realmente impede que
