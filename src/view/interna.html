@@ -558,27 +558,35 @@
             </p>
             <div style="margin: 0 auto;text-align: center;display: flex;justify-content: center;">
                 
-              <amp-ad width="300" height="250"
-                    type="doubleclick"
-                    data-slot="/21692678505/ros_canalrural"
-                    rtc-config='{
-                      "vendors": {
-                        "gpt": {
+              <amp-ad
+                  width="300"
+                  height="250"
+                  type="doubleclick"
+                  data-slot="/21692678505/ros_canalrural"
+                  rtc-config='{
+                    "vendors": {
+                      "gpt": {
+                        "PARAMS": {
                           "page_path": "${canonicalPath}",
                           "category": "${pathSegment(2)}"
                         }
-                      },
-                      "timeoutMillis": 750
-                    }'>
-              <script type="application/json">
-                {
-                  "targeting": {
-                    "page_path": "${canonicalPath}",
-                    "category": "${pathSegment(2)}"
-                  }
-                }
-              </script>
-            </amp-ad>
+                      }
+                    },
+                    "urls": [
+                      "https://dihcodigo.github.io/mitoouverdadeLPWords/src/view/interna.html"
+                    ],
+                    "timeoutMillis": 500
+                  }'>
+                  <script type="application/json">
+                    {
+                      "targeting": {
+                        "page_path": "${canonicalPath}",
+                        "category": "${pathSegment(2)}"
+                      }
+                    }
+                  </script>
+                </amp-ad>
+
 
 
             </div>
