@@ -1,23 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html ⚡>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-      <!-- Google Tag Manager -->
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TJPGRF27');</script>
-        <!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <title>Test AMP RTC Configuration</title>
+  <link rel="canonical" href="https://example.com">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <style amp-custom>
+    /* Adicione aqui estilos personalizados */
+  </style>
 </head>
 <body>
-     <!-- Google Tag Manager (noscript) -->
-     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJPGRF27"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
 
-    <h1>PAGINA ACESSADA</h1>
+  <!-- Elemento AMP Ad com configuração de RTC -->
+  <amp-ad width="300" height="250"
+          type="doubleclick"
+          data-slot="/21692678505/ros_canalrural"
+          rtc-config='{
+            "vendors": {
+              "gpt": {
+                "page_path": "${canonicalPath}",
+                "category": "${pathSegment(2)}"
+              }
+            },
+            "timeoutMillis": 750
+          }'>
+    <script type="application/json">
+      {
+        "targeting": {
+          "page_path": "${canonicalPath}",
+          "category": "${pathSegment(2)}"
+        }
+      }
+    </script>
+  </amp-ad>
+
+  <!-- Script para verificar configuração do RTC -->
+  <script>
+    function checkRTC() {
+      var ampAds = document.querySelectorAll('amp-ad');
+      
+      if (ampAds.length > 0) {
+        ampAds.forEach(function(ampAd, index) {
+          console.log(`Checking AMP Ad ${index + 1}`);
+          console.log('RTC Config:', ampAd.getAttribute('rtc-config'));
+
+          // Adicionando uma verificação básica dos valores do targeting
+          var targeting = ampAd.querySelector('script[type="application/json"]');
+          if (targeting) {
+            console.log('Targeting Config:', JSON.parse(targeting.textContent));
+          } else {
+            console.log('Targeting script not found.');
+          }
+        });
+      } else {
+        console.log('No AMP Ad elements found.');
+      }
+    }
+
+    // Executa a função para verificar a configuração do RTC
+    document.addEventListener('DOMContentLoaded', function() {
+      checkRTC();
+    });
+  </script>
+
 </body>
 </html>
