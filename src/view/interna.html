@@ -721,7 +721,26 @@
     </main>
     <!-- AMP | bottom_stickyad -->
     <amp-sticky-ad layout="nodisplay">
-      <amp-ad width="320" height="100" type="doubleclick" data-slot="/21692678505/ros_canalrural/sticky-amp">
+      <amp-ad width="320" height="100"
+              type="doubleclick"
+              data-slot="/21692678505/ros_canalrural/sticky-amp"
+              rtc-config='{
+                "vendors": {
+                  "gpt": {
+                    "page_path": "${canonicalPath}",
+                    "category": "${pathSegment(2)}"
+                  }
+                },
+                "timeoutMillis": 750
+              }'>
+        <script type="application/json">
+          {
+            "targeting": {
+              "page_path": "${canonicalPath}",
+              "category": "${pathSegment(2)}"
+            }
+          }
+        </script>
       </amp-ad>
     </amp-sticky-ad>
 
