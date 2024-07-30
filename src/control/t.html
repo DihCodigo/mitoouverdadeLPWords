@@ -29,55 +29,63 @@
       margin-top: 10px;
     }
   </style>
+
   <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'customEvent',
+      'Categoria': 'loja',
+      'eventAction': 'action',
+      'eventLabel': 'label',
+      'eventValue': 'value'
+    });
+
+    function getCategoryFromDataLayer() {
+      for (var i = 0; i < window.dataLayer.length; i++) {
+        var item = window.dataLayer[i];
+        if (item.Categoria) {
+          return item.Categoria;
+        }
+      }
+      return null;
+    }
+
+    var categoryValue = getCategoryFromDataLayer();
+
+    console.log(categoryValue);
+
     var adUnitIds = [
-      "header-desktop", "middle-page-1-desktop", 
-      "middle-page-2-desktop", "outofpage", "interstitial"
+      "banner-desktop"
     ];
-    var refreshRate = 15000;
+    var googleAccount = "/23055443421/";
+    var refreshRate = 35000;
     var googleFormats;
-    
+
     // Função para identificar o tipo de página e definir os formatos dos anúncios
     function setGoogleFormats() {
       var path = window.location.pathname;
-      if (path === '/' || path === '/home') { // Ajuste conforme a sua lógica de página inicial
-        googleFormats = [
-          [[[970,90],[728,90]], 'girodoboi_home', 'sticky_ad', 'widescreen', 'atf', 'leaderboard_sticky_atf'],
-          [[[970,90],[728,90]], 'girodoboi_home', 'header-desktop', 'widescreen', 'atf', 'header-desktop'],
-          [[[970,250],[970,90],[728,90]], 'girodoboi_home', 'middle-page-1-desktop', 'widescreen', 'atf', 'middle-page-1-desktop'],
-          [[[300,250],[300,600]], 'girodoboi_home', 'aside-1-desktop', 'widescreen', 'atf', 'aside-1-desktop'],
-          [[[970,250],[970,90],[728,90]], 'girodoboi_home', 'middle-page-2-desktop', 'widescreen', 'atf', 'middle-page-2-desktop'],
-          [[[300,250],[300,600]], 'girodoboi_home', 'aside-2-desktop', 'widescreen', 'atf', 'aside-2-desktop']
-        ];
-      } else {
-        googleFormats = [
-          [[[970,90],[728,90]], 'girodoboi_internas', 'sticky_ad', 'widescreen', 'atf', 'leaderboard_sticky_atf'],
-          [[[970,90],[728,90]], 'girodoboi_internas', 'header-desktop', 'widescreen', 'atf', 'header-desktop'],
-          [[[970,250],[970,90],[728,90]], 'girodoboi_internas', 'middle-page-1-desktop', 'widescreen', 'atf', 'middle-page-1-desktop'],
-          [[[300,250],[300,600]], 'girodoboi_internas', 'aside-1-desktop', 'widescreen', 'atf', 'aside-1-desktop'],
-          [[[970,250],[970,90],[728,90]], 'girodoboi_internas', 'middle-page-2-desktop', 'widescreen', 'atf', 'middle-page-2-desktop'],
-          [[[300,250],[300,600]], 'girodoboi_internas', 'aside-2-desktop', 'widescreen', 'atf', 'aside-2-desktop'],
-          [[728,90], 'girodoboi_internas', 'middle-content-1-desktop', 'widescreen', 'atf', 'middle-content-1-desktop'],
-          [[728,90], 'girodoboi_internas', 'middle-content-2-desktop', 'widescreen', 'atf', 'middle-content-2-desktop'],
-          [[728,90], 'girodoboi_internas', 'middle-content-3-desktop', 'widescreen', 'atf', 'middle-content-3-desktop'],
-          [[728,90], 'girodoboi_internas', 'middle-content-4-desktop', 'widescreen', 'atf', 'middle-content-4-desktop'],
-          [[728,90], 'girodoboi_internas', 'middle-content-5-desktop', 'widescreen', 'atf', 'middle-content-5-desktop'],
-          [[728,90], 'girodoboi_internas', 'middle-content-6-desktop', 'widescreen', 'atf', 'middle-content-6-desktop'],
-        ];
-      }
+      var isMobile = window.innerWidth < 768;
+      googleFormats = [
+        {
+          format: isMobile ? [[320, 100]] : [[970, 250]],
+          adUnitPath: googleAccount + 'broto/' + (categoryValue || 'default'),
+          adUnitId: 'banner-desktop',
+          positions: ['widescreen', 'atf', 'banner_sticky_atf']
+        }
+      ];
+      console.log(googleFormats[0]);
     }
 
     // Define as dimensões com base nos formatos
     function getAdDimensions(adUnitId) {
-      var isDesktop = window.innerWidth > 728;
       var format = googleFormats.find(function(format) {
-        return format[2] === adUnitId;
+        return format.adUnitId === adUnitId;
       });
       if (!format) {
         console.error('Formato não encontrado para:', adUnitId);
         return [];
       }
-      return isDesktop ? format[0] : format[1];
+      return format.format;
     }
 
     (function() {
@@ -116,7 +124,7 @@
       var slot;
 
       function defineAdSlot() {
-        var adUnitPath = getAdUnitPath(window.location.href);
+        var adUnitPath = googleFormats[0].adUnitPath; // Usando o caminho definido em googleFormats
         googletag.cmd.push(function () {
           var adDimensions = getAdDimensions(adUnitId);
           if (!adDimensions || adDimensions.length === 0) {
@@ -218,21 +226,6 @@
       observer.observe(adContainer);
     }
 
-    function getAdUnitPath(url) {
-      var adUnitPath;
-      if (url.includes("home") || url === "/") {
-        adUnitPath = "21692678505/giro_do_boi_home";
-      } else if (url.includes("internas")) {
-        adUnitPath = "21692678505/giro_do_boi_internas";
-      } else {
-        adUnitPath = "21692678505/giro_do_boi_default";
-      }
-      console.log('URL:', url);
-      console.log('Ad Unit Path:', adUnitPath);
-      return adUnitPath;
-    }
-
-
     function trackViewability(adUnitId, isVisible) {
       console.log(adUnitId + ' está ' + (isVisible ? 'visível' : 'não visível'));
     }
@@ -245,7 +238,7 @@
         console.error('Interstitial container não encontrado:', adUnitId);
       }
 
-      var adUnitPath = getAdUnitPath(window.location.href);
+      var adUnitPath = googleFormats[0].adUnitPath; // Usando o caminho definido em googleFormats
       googletag.cmd.push(function () {
         slot = googletag.defineOutOfPageSlot(adUnitPath, adUnitId)
           .addService(googletag.pubads());
@@ -255,12 +248,8 @@
   </script>
 </head>
 <body>
-  <div id="header-desktop"></div>
-  <div id="header-mobile"></div>
-  <div id="middle-page-1-desktop"></div>
-  <div id="middle-page-1-mobile"></div>
-  <div id="middle-page-2-desktop"></div>
-  <div id="middle-page-2-mobile"></div>
+  <div id="banner-desktop"></div>
+  
   <!-- Adicione outros contêineres de anúncio conforme necessário -->
 </body>
 </html>
