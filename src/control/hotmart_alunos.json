@@ -1,0 +1,12 @@
+
+{
+  "alunos_concluidos": [
+      {
+          "user_id": "ZYOmWXlded",
+          "name": "Hotmart Example User Two",
+          "email": "user.two@hotmart.com",
+          "progress.completed_percentage": "100%"
+      }
+  ]
+}
+
