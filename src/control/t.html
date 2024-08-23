@@ -1,255 +1,442 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anúncios</title>
-  <style>
-    .ad-container {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
+<div id="id_referencia"></div>
+<script type="text/javascript">
+  var _MacroDeclique = "[%ContadordeClique%]",
+    _ContadorImpressao = "[%ContadordeImpressao%]",
+    _Largura = "[%Largura%]",
+    _Altura = "[%Altura%]",
+    _Imagem = "[%Imagem%]",
+    _HTML5 = "[%HTML5%]";
 
-    .ad-content {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-    }
+  if (
+    window.frameElement !== null &&
+    typeof parent._MacroDeCliqueANJ === "string"
+  ) {
+    _MacroDeclique =
+      parent._MacroDeCliqueANJ + "%%CLICK_URL_ESC_ESC%%%%DEST_URL_ESC_ESC%%";
+  } else if (typeof _MacroDeCliqueANJ === "string") {
+    _MacroDeclique =
+      _MacroDeCliqueANJ + "%%CLICK_URL_ESC_ESC%%%%DEST_URL_ESC_ESC%%";
+  } else {
+    _MacroDeclique = "%%CLICK_URL_UNESC%%%%DEST_URL%%";
+  }
+  if (_Imagem !== "") {
+    window.frameElement.style.maxWidth = "100%";
+    document.write(
+      '<a href="' +
+        _MacroDeclique +
+        '" target="_blank" style="text-decoration: none"><img  style = "max-width:100%; object-fit:contain;" src="' +
+        _Imagem +
+        '" width="' +
+        _Largura +
+        '" height="' +
+        _Altura +
+        '" border="0" /></a>'
+    );
+  } else if (_HTML5 !== "") {
+    document.write(
+      '<a href="' +
+        _MacroDeclique +
+        '" target="_blank" style="text-decoration: none"><div style="width:' +
+        _Largura +
+        "px;height:" +
+        _Altura +
+        'px;z-index:2;position:absolute"></div></a><iframe width="' +
+        _Largura +
+        '" height="' +
+        _Altura +
+        '" src="' +
+        _HTML5 +
+        '" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" style="z-index:1;position:relative"></iframe>'
+    );
+  }
+  function dimensaoJanela(d) {
+    var ie = /msie/i.test(navigator.userAgent),
+      ieBox =
+        ie &&
+        (window.top.document.compatMode == null ||
+          window.top.document.compatMode == "BackCompat"),
+      canvasEl = ieBox
+        ? window.top.document.body
+        : window.top.document.documentElement;
+    return window.top.innerWidth || canvasEl.clientWidth;
+  }
+  (function () {
+    var _lh = window.top.location.host,
+      _lr = window.top.location.href,
+      _css1 = "",
+      _css2 = "",
+      _css3 = "",
+      _fxt = "",
+      _fx1 = "",
+      _fx2 = "";
+    if (/google.com|saspreview|googleadservices.com/g.test(_lh) === false) {
+      if (_lh !== "www.gazetadopovo.com.br") {
+        var _rf = window.frameElement;
+        console.log(_rf);
+        if (_rf !== null) {
+          if (_rf.id.indexOf("264854699") > -1) {
+            _rf =
+              parent.window.frameElement !== null
+                ? parent.window.frameElement
+                : _rf;
+          }
+          _rf.width = _Largura;
+          _rf.height = _Altura;
+        } else {
+          _rf = document.getElementById("id_referencia");
+        }
+        if (_ContadorImpressao !== "") {
+          var img = new Image(1, 1);
+          img.src = _ContadorImpressao;
+        }
+        if (_lh.indexOf("estadao.com.br") > -1) {
+          if (_Largura >= 800) {
+            if (location.pathname == "/") {
+              _css2 = "left: 0px;";
+            }
+            if (location.host === "www.estadao.com.br") {
+              //window.top.document.querySelector('.class_dp_obj').style = "width: 100% !important";
+              _css3 = "margin: 0 0 0 0 !important;";
+              _Altura = "185";
+              dimensaoJanela() > 1400
+                ? (_rf.parentNode.style.margin = "0 auto")
+                : "";
+              _rf.parentNode.parentNode.id.indexOf("hmeio") > -1
+                ? (_css2 = "left: 0;")
+                : "";
+            } else if (_lr.split("/").length > 4) {
+              _css1 =
+                "margin: 10px auto 0 auto !important;max-width: 100% !important;";
+              _css2 = "left: 0; margin: 0 auto !important;";
+              _css3 = "margin: 0 0 0 0 !important;";
+            } else if (_lr.split("/").length === 4) {
+              /*Subhomes*/
+              _css1 = "width: auto !important";
+              _css2 = "left: 0; width: 100% !important;";
+              _css3 = "margin: 0 0 0 0 !important;";
+            }
+          } else {
+            _css1 = "height: auto !important;";
+            _css2 = "left: 0;";
+          }
+        } else if (_lh === "www1.folha.uol.com.br") {
+          _css1 = "left: 0;";
+        } else if (
+          _lh === "www.folha.uol.com.br" ||
+          _lh === "agora.folha.uol.com.br" ||
+          _lh === "gauchazh.clicrbs.com.br"
+        ) {
+          _css2 = "left: 0;";
+        } else if (
+          _lh === "pioneiro.clicrbs.com.br" ||
+          _lh === "diariogaucho.clicrbs.com.br"
+        ) {
+          if (_lh === "diariogaucho.clicrbs.com.br" && _Largura < 800) {
+            console.log("V2");
+            _rf.parentNode.parentNode.parentNode.setAttribute(
+              "style",
+              "width: " + _Largura + "px !important;"
+            );
+            _rf.parentNode.parentNode.parentNode.style.margin = "0 auto";
+            _rf.parentNode.style.margin = "0 auto";
+            _rf.parentNode.parentNode.parentNode.parentNode.style.margin =
+              "20px 0px 30px 0px";
+          } else {
+            _rf.parentNode.parentNode.parentNode.setAttribute(
+              "style",
+              "height: " +
+                _Altura +
+                "px; position: absolute; width: " +
+                _Largura +
+                "px !important; left: 50%; margin-left: -" +
+                _Largura / 2 +
+                "px !important; text-align: center;"
+            );
+            _rf.parentNode.parentNode.parentNode.parentNode.style.height =
+              _Altura + "px";
+          }
+          _css2 = "left: 0;";
+        } else if (_lh.indexOf("agazeta.com.br") > -1) {
+          _rf.parentNode.parentNode.setAttribute("style", "display:block");
+          _rf.parentNode.parentNode.setAttribute("style", "position:relative");
 
-    .ad-content button {
-      margin-top: 10px;
+          if (_Largura >= 800) {
+            _rf.parentNode.style.margin = "0 auto";
+            //_rf.style.maxWidth = "100%"
+            _css1 = "margin: 35px 0 !important;";
+            _css2 = "left: 0; margin: 0 auto !important;top: 0px !important;";
+          }
+          if (_Largura < 800) {
+            _rf.parentNode.parentNode.parentNode.style.height = "100px";
+          }
+        } else if (_lh === "www.tribunapr.com.br") {
+          _css1 = _Largura > 800 ? "margin-left: -36px !important" : "";
+          _css2 = "left: 0;";
+          _rf.parentNode.style.margin = "0 auto";
+          _Largura < 577
+            ? _rf.parentNode.parentNode.setAttribute(
+                "style",
+                "margin-top:0 !important"
+              )
+            : "";
+          _fxt =
+            _rf.parentNode.parentNode.parentNode.className != ""
+              ? 'document.getElementsByClassName("' +
+                _rf.parentNode.parentNode.parentNode.className +
+                '")[0]'
+              : _rf.parentNode.parentNode.parentNode.id != ""
+              ? 'document.getElementById("' +
+                _rf.parentNode.parentNode.parentNode.id +
+                '")'
+              : null;
+          _fx1 =
+            _fxt !== null &&
+            _fxt + '.setAttribute("style","z-index: 2002 !important;");';
+          _fx2 =
+            _fxt !== null &&
+            _fxt + '.setAttribute("style","z-index: unset !important;");';
+        } else if (_lh === "www.opovo.com.br") {
+          _rf.parentNode.style.margin = "0 auto";
+          _css2 = "left: 0;";
+        } else if (
+          _lh === "www.lance.com.br" ||
+          _lh === "m.lance.com.br" ||
+          _lh === "lance.com.br"
+        ) {
+          _rf.parentNode.style.margin = "0 auto";
+          if (_Largura > 800) {
+            //_rf.parentNode.parentNode.parentNode.parentNode.setAttribute("style","z-index:200 !important");
+            _css1 =
+              "position: relative !important;top: 0;max-width:1100px !important;margin: 0 auto;opacity: 1 !important;-webkit-transform: unset !important;";
+            _css2 =
+              "left: 0;margin: 0 auto !important;opacity: 1 !important;-webkit-transform: unset !important;";
+          } else {
+            _rf.parentNode.parentNode.parentNode.parentNode.setAttribute(
+              "style",
+              "display:block !important;"
+            );
+            _rf.parentNode.parentNode.parentNode.setAttribute(
+              "style",
+              "position:unset !important;-webkit-transform: unset !important; -moz-transform: unset !important; -o-transform: unset !important; transform: unset !important;"
+            );
+            _css3 = "margin-top: 10px";
+          }
+        } else if (_lh === "correio.rac.com.br") {
+          _rf.parentNode.style.margin = "0 auto";
+          if (_Largura > 800) {
+            _css2 = "left: 0; margin: 0 auto !important";
+          } else {
+            _css1 =
+              "left: 0; max-height: none !important; max-width: none !important";
+            _rf.parentElement.parentElement.setAttribute("style", "");
+          }
+        } else if (_lh === "oglobo.globo.com" || _lh === "m.extra.globo.com") {
+          //_rf.parentNode.parentNode.parentNode.style.display = "block";
+          _rf.parentNode.style.margin = "0 auto";
+          if (_lh === "oglobo.globo.com" && _Largura < 600) {
+            _css1 = "min-height: " + _Altura + "px !important";
+            _css1 = "width: 100% !important";
+            _css2 = "height: " + _Altura + "px !important; left: 0";
+            _rf.style.width = "1190px !important";
+          } else {
+            console.log("TESTANDO");
+          }
+        } else if (_lh.indexOf("nsctotal") > -1) {
+          _rf.parentNode.style.margin = "0 auto";
+          _css2 = "left: 0;";
+        }
+        _rf.style.width = _Largura + "px";
+        _rf.style.height = _Altura + "px";
+        _rf.parentNode.style.width = "auto";
+        _rf.parentNode.style.height = _Altura + "px";
+        if (
+          _lh === "www.lance.com.br" ||
+          _lh === "m.lance.com.br" ||
+          _lh === "lance.com.br"
+        ) {
+          _rf.parentNode.style.margin = "0 auto";
+          if (_Largura > 800) {
+            _rf.style.width = "100%";
+            _rf.style.maxWidth = "1100px !important";
+          }
+        }
+        if (window.top._controleDPScript === undefined) {
+          //_rf.parentNode.parentNode.insertAdjacentHTML("beforebegin", '<div id="ctl_dp_obj" style="width:auto;' + _css3 + '"></div>');
+          _rf.parentNode.parentNode.className =
+            _rf.parentNode.parentNode.className + " class_dp_obj";
+          var _sc = parent.document.createElement("script");
+          _sc.id = "scp_dp_obj";
+          _sc.type = "text/javascript";
+          _sc.text =
+            'var _timeoutDPOBJ = "", _controleDPOBJ = false, _controlevrDPOBJ = 1, _controlefdDPOBJ = ""; function _icls_dp_obj(div) {div.className.indexOf("fx_dp_obj") === -1 ? div.className = div.className + " fx_dp_obj" : ""; } function _fo_dp_obj(div) {_controlevrDPOBJ < 0 ? _controlevrDPOBJ = 1 : ""; _controlefdDPOBJ = setInterval(function() {if (_controlevrDPOBJ > 0.0) {_controlevrDPOBJ-= 0.1; document.getElementsByClassName("class_dp_obj").length > 0 ? document.getElementsByClassName("class_dp_obj")[0].style.opacity = _controlevrDPOBJ : ""; ' +
+            _fx1 +
+            '} else {clearInterval(_controlefdDPOBJ); _rcls_dp_obj(div);} }, 100); } function _rcls_dp_obj(div) {var ar = div.className.split(" "); for (var i = 0; i < ar.length; i++) {if (ar[i] === "fx_dp_obj") {ar.splice(i, 1); } } div.className = ar.join(" "); document.getElementById("ctl_dp_obj").style.height = "0px";document.getElementsByClassName("class_dp_obj").length > 0 ? document.getElementsByClassName("class_dp_obj")[0].style.opacity = 1 : "";' +
+            _fx2 +
+            '} function _vb_dp_obj() {var cls = document.getElementsByClassName("class_dp_obj"), idc = document.getElementById("ctl_dp_obj"); if (cls.length > 0 && idc !== null) {cls = cls[0]; if ((idc.getBoundingClientRect().y || idc.getBoundingClientRect().top) < -1 && (idc.getBoundingClientRect().y || idc.getBoundingClientRect().top) > -' +
+            _Altura +
+            ' && _controleDPOBJ === false) {_icls_dp_obj(cls); _controleDPOBJ = true; _timeoutDPOBJ = setTimeout(\'_fo_dp_obj(document.getElementsByClassName("class_dp_obj")[0])\', 3000); document.getElementById("ctl_dp_obj").style.height = "' +
+            (parseInt(_Altura) + 1) +
+            'px"; } else if ((idc.getBoundingClientRect().y || idc.getBoundingClientRect().top) > -1) {_rcls_dp_obj(cls); clearTimeout(_timeoutDPOBJ); clearInterval(_controlefdDPOBJ); _controleDPOBJ = false; } } }';
+          window.top.document.getElementsByTagName("head")[0].appendChild(_sc);
+          if (location.host === "www.estadao.com.br") {
+            var leftSd = window.top.document.querySelector(".orelha.-left");
+            var rightSd = window.top.document.querySelector(".orelha.-right");
+            if (leftSd) {
+              leftSd.style.display = "none";
+              rightSd.style.display = "none";
+            }
+            window.top.document.head.insertAdjacentHTML(
+              "afterbegin",
+              '<style type="text/css" id="css_dp_obj">.class_dp_obj{height: ' +
+                _Altura +
+                "px !important; text-align: center !important; margin: 0 auto !important;" +
+                _css1 +
+                "}.fx_dp_obj{width:100%;background: #f1f1f1 !important; top: 0 !important; z-index: 9999999 !important;" +
+                _css2 +
+                "}</style>"
+            );
+          }
+          if (location.host === "www.tribunapr.com.br") {
+            if (window.top.innerWidth > 800) {
+              window.top.document.head.insertAdjacentHTML(
+                "afterbegin",
+                '<style type="text/css" id="css_dp_obj">.fx_dp_obj{background: #f1f1f1 !important; position: fixed !important; top: 0 !important; margin-top: 79px !important; z-index: 9999999 !important; padding: 0 !important;' +
+                  _css2 +
+                  "}</style>"
+              );
+            }
+            if (window.top.innerWidth < 800) {
+              _rf.parentNode.parentNode.style.removeProperty("margin-top");
+              window.top.document.head.insertAdjacentHTML(
+                "afterbegin",
+                '<style type="text/css" id="css_dp_obj">.fx_dp_obj{background: #f1f1f1 !important; position: fixed !important; top: 0 !important; margin-top: 60px !important; z-index: 9999999 !important; padding: 0 !important;' +
+                  _css2 +
+                  "}</style>"
+              );
+            }
+          }
+          if (location.host === "oglobo.globo.com") {
+            window.top.document.head.insertAdjacentHTML(
+              "afterbegin",
+              '<style type="text/css" id="css_dp_obj">.class_dp_obj{height: ' +
+                _Altura +
+                "px !important; text-align: center !important; margin: 0 auto !important;" +
+                _css1 +
+                "}.fx_dp_obj{background: #f1f1f1 !important; position: fixed !important; top: 0 !important; z-index: 9999999 !important; padding: 0 !important;" +
+                _css2 +
+                "}</style>"
+            );
+          }
+          if (location.host === "www.agazeta.com.br") {
+            window.top.document.head.insertAdjacentHTML(
+              "afterbegin",
+              '<style type="text/css" id="css_dp_obj">.class_dp_obj{width: 100% !important; height: ' +
+                _Altura +
+                "px !important; text-align: center !important; margin: 0 auto !important;}</style>"
+            );
+          } else {
+            window.top.document.head.insertAdjacentHTML(
+              "afterbegin",
+              '<style type="text/css" id="css_dp_obj">.class_dp_obj{width: 100% !important; height: ' +
+                _Altura +
+                "px !important; text-align: center !important; margin: 0 auto !important;" +
+                _css1 +
+                "}.fx_dp_obj{background: #f1f1f1 !important; position: fixed !important; top: 0 !important; z-index: 9999999 !important;" +
+                _css2 +
+                "}</style>"
+            );
+          }
+          /*GA - Acessos por dispositivos unicos */
+          var as = document.createElement("script");
+          as.async = true;
+          as.type = "text/javascript";
+          as.src = "https://www.googletagmanager.com/gtag/js?id=UA-143946707-2";
+          window.document.head.appendChild(as);
+          var ga = document.createElement("script");
+          ga.type = "text/javascript";
+          ga.text =
+            'window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "UA-143946707-2", {"page_path": "/ADUNIT=%%ADUNIT%%"});';
+          window.document.body.appendChild(ga);
+          /*GA - Fim */
+          /*GA4 - Acessos por dispositivos unicos */
+          var as = document.createElement("script");
+          as.async = true;
+          as.type = "text/javascript";
+          as.src = "https://www.googletagmanager.com/gtag/js?id=G-EJXGFFWNST";
+          window.document.head.appendChild(as);
+          var ga = document.createElement("script");
+          ga.type = "text/javascript";
+          ga.text =
+            'window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "G-EJXGFFWNST", {"page_path": "/ADUNIT=%%ADUNIT%%"});';
+          window.document.body.appendChild(ga);
+          /*GA4 - Fim */
+        }
+        if (window.attachEvent) {
+          window.top.attachEvent("onscroll", function () {
+            window.top._vb_dp_obj();
+          });
+        } else {
+          window.top.addEventListener("scroll", function () {
+            window.top._vb_dp_obj();
+          });
+        }
+      }
     }
-  </style>
+    window.top._controleDPScript = 1;
+  })();
+  if (
+    window.frameElement !== null &&
+    typeof parent._MacroDeCliqueANJ === "string"
+  ) {
+    parent._MacroDeCliqueANJ !== ""
+      ? (window._MacroDeCliqueANJ =
+          parent._MacroDeCliqueANJ + "%%CLICK_URL_ESC_ESC%%")
+      : (window._MacroDeCliqueANJ = "%%CLICK_URL_UNESC%%");
+  } else {
+    window._MacroDeCliqueANJ = "%%CLICK_URL_ESC%%%%CLICK_URL_UNESC%%";
+  }
+</script>
+<div id="tag">[%Tag%]</div>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      'event': 'customEvent',
-      'Categoria': 'loja',
-      'eventAction': 'action',
-      'eventLabel': 'label',
-      'eventValue': 'value'
+<script>
+  if (window.location.hostname === "www.lance.com.br") {
+    setTimeout(function () {
+      window.top.document.querySelector(".main-navigation").style.paddingTop =
+        "245px";
+      window.top.document.querySelector(".main-navigation").style.zIndex = "10";
+      window.top.document.querySelector(".class_dp_obj").style.zIndex = "99999";
+      window.top.document.querySelector(".main-container").style.paddingTop =
+        "120px";
+    }, 1000);
+    window.addEventListener("load", function () {
+      window.top.document.querySelector("#bg").children[0].style.top = "10vh";
+      window.top.document.querySelector("#bg").children[0].style.bottom = "0";
     });
-
-    function getCategoryFromDataLayer() {
-      for (var i = 0; i < window.dataLayer.length; i++) {
-        var item = window.dataLayer[i];
-        if (item.Categoria) {
-          return item.Categoria;
+    window.top.document.addEventListener("scroll", function () {
+      var dpObj = document.querySelector(".ctl_dp_obj");
+      dpObj.remove();
+      if (
+        window.top.document.querySelector("body").getBoundingClientRect().y <
+        -100
+      ) {
+        if (
+          window.top.document.querySelector("body").getBoundingClientRect().y <
+          -100
+        ) {
+          window.top.document.querySelector(
+            ".main-navigation"
+          ).style.paddingTop = "0px";
+          window.top.document.querySelector(
+            ".ad-unit.class_dp_obj"
+          ).style.display = "none";
         }
-      }
-      return null;
-    }
-
-    var categoryValue = getCategoryFromDataLayer();
-
-    console.log(categoryValue);
-
-    var adUnitIds = [
-      "banner-desktop"
-    ];
-    var googleAccount = "/23055443421/";
-    var refreshRate = 35000;
-    var googleFormats;
-
-    // Função para identificar o tipo de página e definir os formatos dos anúncios
-    function setGoogleFormats() {
-      var path = window.location.pathname;
-      var isMobile = window.innerWidth < 768;
-      googleFormats = [
-        {
-          format: isMobile ? [[320, 100]] : [[970, 250]],
-          adUnitPath: googleAccount + 'broto/' + (categoryValue || 'default'),
-          adUnitId: 'banner-desktop',
-          positions: ['widescreen', 'atf', 'banner_sticky_atf']
-        }
-      ];
-      console.log(googleFormats[0]);
-    }
-
-    // Define as dimensões com base nos formatos
-    function getAdDimensions(adUnitId) {
-      var format = googleFormats.find(function(format) {
-        return format.adUnitId === adUnitId;
-      });
-      if (!format) {
-        console.error('Formato não encontrado para:', adUnitId);
-        return [];
-      }
-      return format.format;
-    }
-
-    (function() {
-      setGoogleFormats(); // Inicializa os formatos dos anúncios
-
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
-      document.head.appendChild(script);
-
-      script.onload = function() {
-        window.googletag = window.googletag || { cmd: [] };
-        googletag.cmd.push(function() {
-          googletag.pubads().enableLazyLoad({
-            fetchMarginPercent: 200,
-            renderMarginPercent: 50,
-            mobileScaling: 2.0
-          });
-
-          adUnitIds.forEach(initializeAd);
-          googletag.enableServices();
-        });
-      };
-    })();
-
-    function initializeAd(adUnitId) {
-      var adContainer = document.getElementById(adUnitId);
-      if (!adContainer) {
-        console.error('Container de anúncio não encontrado para:', adUnitId);
-        return;
-      }
-
-      var adRefreshInterval;
-      var debugInterval;
-      var elapsedSeconds = 0;
-      var slot;
-
-      function defineAdSlot() {
-        var adUnitPath = googleFormats[0].adUnitPath; // Usando o caminho definido em googleFormats
-        googletag.cmd.push(function () {
-          var adDimensions = getAdDimensions(adUnitId);
-          if (!adDimensions || adDimensions.length === 0) {
-            return;
-          }
-          if (adUnitId === "outofpage") {
-            slot = googletag
-              .defineOutOfPageSlot(adUnitPath, adUnitId)
-              .addService(googletag.pubads());
-          } else if (adUnitId === "interstitial") {
-            slot = googletag
-              .defineSlot(adUnitPath, [window.innerWidth, window.innerHeight], adUnitId)
-              .addService(googletag.pubads());
-          } else {
-            slot = googletag
-              .defineSlot(adUnitPath, adDimensions, adUnitId)
-              .addService(googletag.pubads())
-              .setTargeting("pos", "header")
-              .setTargeting("visible", "Not Visible");
-          }
-          console.log(adUnitId + ' Slot Definido: ' + new Date().toLocaleTimeString());
-        });
-      }
-
-      function displayAd() {
-        if (slot) {
-          googletag.cmd.push(function() {
-            googletag.display(adUnitId);
-            console.log(adUnitId + ' Exibido: ' + new Date().toLocaleTimeString());
-          });
-        }
-      }
-
-      function refreshAd() {
-        if (slot) {
-          googletag.cmd.push(function() {
-            googletag.pubads().refresh([slot]);
-            console.log(adUnitId + ' Atualizado: ' + new Date().toLocaleTimeString());
-          });
-        }
-      }
-
-      function startAdRefresh() {
-        if (!adRefreshInterval) {
-          adRefreshInterval = setInterval(refreshAd, refreshRate);
-        }
-        if (!debugInterval) {
-          debugInterval = setInterval(function() {
-            elapsedSeconds++;
-            //console.log(adUnitId + ' Tempo decorrido: ' + elapsedSeconds + ' segundos');
-          }, 1000);
-        }
-      }
-
-      function stopAdRefresh() {
-        if (adRefreshInterval) {
-          clearInterval(adRefreshInterval);
-          adRefreshInterval = null;
-        }
-        if (debugInterval) {
-          clearInterval(debugInterval);
-          debugInterval = null;
-        }
-        elapsedSeconds = 0;
-      }
-
-      if (adUnitId === "interstitial") {
-        googleInterstitial(adUnitId);
-        return;
-      }
-
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          trackViewability(adUnitId, entry.isIntersecting);
-          if (entry.isIntersecting) {
-            adContainer.style.display = 'block';
-            if (!slot) {
-              defineAdSlot();
-            }
-            if (slot) {
-              googletag.cmd.push(function() {
-                slot.setTargeting("visible", "Visible");
-                googletag.pubads().refresh([slot]);
-              });
-            }
-            startAdRefresh();
-            displayAd();
-          } else {
-            if (slot) {
-              googletag.cmd.push(function() {
-                slot.setTargeting("visible", "Not Visible");
-                googletag.pubads().refresh([slot]);
-              });
-            }
-            stopAdRefresh();
-          }
-        });
-      });
-      observer.observe(adContainer);
-    }
-
-    function trackViewability(adUnitId, isVisible) {
-      console.log(adUnitId + ' está ' + (isVisible ? 'visível' : 'não visível'));
-    }
-
-    function googleInterstitial(adUnitId) {
-      var ad = document.getElementById(adUnitId);
-      if (ad) {
-        ad.style.display = 'flex';
       } else {
-        console.error('Interstitial container não encontrado:', adUnitId);
+        window.top.document.querySelector(".main-navigation").style.paddingTop =
+          "245px";
+        window.top.document.querySelector(
+          ".ad-unit.class_dp_obj"
+        ).style.display = "block";
       }
-
-      var adUnitPath = googleFormats[0].adUnitPath; // Usando o caminho definido em googleFormats
-      googletag.cmd.push(function () {
-        slot = googletag.defineOutOfPageSlot(adUnitPath, adUnitId)
-          .addService(googletag.pubads());
-        googletag.display(adUnitId);
-      });
-    }
-  </script>
-</head>
-<body>
-  <div id="banner-desktop"></div>
-  
-  <!-- Adicione outros contêineres de anúncio conforme necessário -->
-</body>
-</html>
+    });
+  }
+</script>
