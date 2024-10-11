@@ -8,16 +8,20 @@
 
     <script>
         (function() {
+            const userId = localStorage.getItem('user-id') || Date.now().toString(); // Gera um ID único com base no timestamp
+            localStorage.setItem('user-id', userId); // Armazena o ID no localStorage
+    
             fetch('http://localhost:5000/api/analytics/track', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'user-id': 'some-unique-user-id' // Substitua 'some-unique-user-id' pelo ID real do usuário
+                    'user-id': userId // Envia o ID do usuário nos headers
                 },
                 body: JSON.stringify({})
             });
         })();
     </script>
+    
     
     <script>
         window.dataLayer = window.dataLayer || [];
