@@ -5,24 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Titulo - Mito ou Verdade</title>
     <script>
-        // analytics.js
         (function() {
-            const script = document.createElement('script');
-            script.src = 'http://localhost:5000/api/analytics/track'; // URL do seu back-end
-            script.type = 'text/javascript';
-            script.async = true;
-            script.onload = function() {
-                fetch(script.src, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({}) // Você pode enviar dados adicionais se necessário
-                });
-            };
-            document.head.appendChild(script);
+            fetch('http://localhost:5000/api/analytics/track', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            });
         })();
-
     </script>
     
     <script>
