@@ -11,7 +11,8 @@
             fetch('http://localhost:5000/api/analytics/track', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'user-id': 'some-unique-user-id' // Substitua 'some-unique-user-id' pelo ID real do usuário
                 },
                 body: JSON.stringify({})
             });
