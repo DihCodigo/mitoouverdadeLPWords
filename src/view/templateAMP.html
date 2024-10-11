@@ -1,27 +1,37 @@
 <!doctype html>
 <html ⚡>
-<head>
+  <head>
     <meta charset="utf-8">
-    <title>Exemplo de AMP com Anúncios</title>
-    <link rel="canonical" href="self.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="canonical" href="self.html">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script type="module" src="https://assets.r7.com/cda-ad-player/cda-ad-player/cda-ad-player.esm.js"></script>
-    <style amp-custom>
-        /* Adicione seu estilo personalizado aqui */
-    </style>
-</head>
-<body>
-    <!-- 
-      O 'ad-hash' é um identificador global que deve ser único para cada anúncio. 
-      Utilize a seguinte estrutura para criar o seu hash, substituindo as partes conforme necessário:
-      
-      Estrutura: /[ID_UNICO]/[PARCEIRO]/[CATEGORIA]/[TIPO_DE_ANUNCIO]
-      
-      Exemplo genérico:
-    -->
-    <cda-ad-player ad-hash="/7542/parceiros/amomeupet/video"></cda-ad-player>
+    <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <title>Anúncio AMP</title>
+  </head>
+  <body>
 
-    <!-- Conteúdo adicional da página -->
-</body>
+    <amp-state id="pagepath">
+      <script type="application/json">
+        {
+          "path": "/categoria/exemplo"
+        }
+      </script>
+    </amp-state>
+
+    <h1>TEste </h1>
+    <amp-ad
+      width="300"
+      height="250"
+      type="doubleclick"
+      data-slot="/7542/parceiros/amomeupet/video"
+      json='{
+        "targeting": {
+          "categoria": "{{pagepath.path}}",
+          "key2": "value2"
+        }
+      }'>
+    </amp-ad>
+
+  </body>
 </html>
