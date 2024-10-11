@@ -10,7 +10,7 @@
         (function() {
             const userId = localStorage.getItem('user-id') || Date.now().toString(); // Gera um ID único com base no timestamp
             localStorage.setItem('user-id', userId); // Armazena o ID no localStorage
-    
+
             fetch('http://localhost:5000/api/analytics/track', {
                 method: 'POST',
                 headers: {
