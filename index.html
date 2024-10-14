@@ -4,22 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Titulo - Mito ou Verdade</title>
-    <script src="http://localhost:5000/api/analytics/track"></script>
+    <script src="http://localhost:3000/monitor.js"></script>
 
     <script>
-        (function() {
-            const userId = localStorage.getItem('user-id') || Date.now().toString(); // Gera um ID único com base no timestamp
-            localStorage.setItem('user-id', userId); // Armazena o ID no localStorage
+        // Função para gerar um ID único para cada sessão (para identificar cada dispositivo/guia)
+        function generateSessionId() {
+            return 'xxxx-xxxx-4xxx-yxxx-xxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
 
-            fetch('http://localhost:5000/api/analytics/track', {
+        // Obter ou gerar um sessionId e armazená-lo no localStorage para persistência
+        let sessionId = localStorage.getItem('sessionId');
+        if (!sessionId) {
+            sessionId = generateSessionId();
+            localStorage.setItem('sessionId', sessionId);
+        }
+
+        // Função para registrar o acesso do usuário no servidor
+        function trackUser(siteId) {
+            fetch('http://localhost:3000/api/track', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'user-id': userId // Envia o ID do usuário nos headers
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({})
-            });
-        })();
+                body: JSON.stringify({
+                    siteId: siteId,       // ID único do site que você está monitorando
+                    sessionId: sessionId  // ID da sessão gerada para o usuário
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(`Usuários online no site ${siteId}:`, data.onlineUsers);
+            })
+            .catch(error => console.error('Erro ao registrar o usuário:', error));
+        }
+
+        // Chame a função com o ID do site que está sendo monitorado
+        // Exemplo: 'site123', 'meu-site', ou qualquer outro identificador que faça sentido
+        trackUser('meu-site');
+
     </script>
     
     
