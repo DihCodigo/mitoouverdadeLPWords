@@ -459,48 +459,38 @@
 
 
 <!--AMP CODE-->
-<style amp-custom>
+  <!-- Importa o componente amp-ima-video -->
+  <script async custom-element="amp-ima-video" src="https://cdn.ampproject.org/v0/amp-ima-video-0.1.js"></script>
+
+
+ <!-- Estilos personalizados -->
+ <style amp-custom>
   #video-container {
     position: fixed;
     top: 80%;
     right: 0;
     transform: translateY(-50%);
-    width: 320px;
-    height: 180px;
+    width: 300px;
+    height: 250px;
     z-index: 1000;
     background-color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-  }
-
-  #close-button {
-    position: absolute;
-    top: -12px;
-    right: 0px;
-    width: 33px;
-    height: 30px;
-    background-color: black;
-    color: white;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 20px;
-    cursor: pointer;
-    line-height:25px;
-    z-index: 1001;
-    border:none;
+    text-align:right;
   }
 </style>
 
-
   </head>
   <body>
-    <div id="video-container">
-      <amp-ima-video id="myVideo" width="640" height="360" layout="responsive" 
-        data-tag="/7542/parceiros/amomeupet" data-poster="/static/samples/img/ima-poster.jpg">
+    <!-- https://pubads.g.doubleclick.net/gampad/ads?iu=/7542,108785468/parceiros/amomeupet/video&description_url=[placeholder]&tfcd=0&npa=0&sz=300x250%7C480x360%7C640x480%7C768x432&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator= -->
+
+
+    <div id="video-container"><a id="close-button" style="font-family:courier new;margin:auto 5px;" on="tap:video-container.hide">Fechar Anúncio[X]</a>
+      <amp-ima-video id="myVideo" width="300" height="250" layout="responsive" data-tag="https://pubads.g.doubleclick.net/gampad/ads?iu=/7542,108785468/parceiros/amomeupet/video&description_url=[placeholder]&tfcd=0&npa=0&sz=300x250%7C480x360%7C640x480%7C768x432&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator=" autoplay>
         <source src="https://media.r7.com/r7/media/adops/parceiros/video_publicidade_pip.mp4" type="video/mp4">
       </amp-ima-video>
-      <button id="close-button" on="tap:video-container.hide">X</button>
     </div>
+
 
     <amp-analytics type="gtag" data-credentials="include">
       <script type="application/json">
