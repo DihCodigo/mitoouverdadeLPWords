@@ -8,353 +8,43 @@
     <title>Document</title>
 </head>
 
-<div style="
-  display: none;
-  width: auto;
-  height: auto;
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%);
-  z-index: 9999998;
-  cursor: pointer;
-">
-    <button onclick="this.parentNode.style.display='none'" style="
-    position: absolute;
-    top: -24px;
-    right: 0;
-    height: 25px;
-    width: 25px;
-    cursor: pointer;
-    z-index: 9999999999;
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 0 0 0 1px;
-    color: #666;
-  ">
-        X
-    </button>
-    <div id="footer">
-        <script>
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .pubads()
-                    .addEventListener("slotRenderEnded", function (event) {
-                        var div = document.getElementById(
-                            event.slot.getSlotElementId()
-                        ).parentNode;
-                        console.log(div);
-                        if (!event.isEmpty && event.slotContentChanged) {
-                            div.style.width = event.size[0] + "px";
-                            div.style.height = event.size[1] + "px";
-                            div.style.display = "block";
-                        }
-                    });
-            });
-            var el = document.body || document.documentElement,
-                wd = el.clientWidth || window.innerWidth;
-            if (wd < 710) {
-                sz = [[320, 50], [300, 50]];
-            } else if (wd < 960) {
-                sz = [[728, 90]];
-            } else {
-                sz = [[970, 90], [728, 90]]
-            }
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542/parceiros/amomeupet",
-                        sz,
-                        "footer"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "footer")
-                    .setTargeting("context", "rodapefixo");
-                googletag.enableServices();
-                googletag.display("footer");
-            });
-        </script>
-    </div>
-</div>
-
-<div id="header">
-  <script>
-      var el = document.body || document.documentElement,
-          wd = el.clientWidth || window.innerWidth;
-      var d_header;
-      switch (true) {
-          case (wd > 768 && wd < 1140):
-              d_header = [[728, 90]];
-              break;
-          case (wd <= 768):
-              d_header = [[300, 50], [300, 100], [320, 50], [320, 100], [300, 250]];
-              break;
-          default:
-              d_header = [[728, 90], [970, 90], [970, 250]];
-      }
-      googletag.cmd.push(function () {
-          window.googletag = window.googletag || { cmd: [] };
-          googletag.cmd.push(function () {
-              googletag
-                  .defineSlot(
-                      "/7542,108785468/parceiros/amomeupet",
-                      d_header,
-                      "header"
-                  )
-                  .addService(googletag.pubads())
-                  .setTargeting("pos", "Billboard")
-                  .setTargeting("context", "principal");
-              googletag.pubads().enableSingleRequest();
-              googletag.enableServices();
-          });
-          googletag.display("header");
-      });
-  </script>
-</div>
 
 
 
-<div id="texto_1">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_1"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_1");
-        });
-    </script>
-</div>
-
-<div id="texto_2">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_2"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_2");
-        });
-
-    </script>
-</div>
-
-<div id="texto_3">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542,108785468/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_3"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_3");
-        });
-    </script>
-</div>
-
-<div id="texto_4">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542,108785468/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_4"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_4");
-        });
-
-    </script>
-</div>
-
-<div id="texto_5">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542,108785468/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_5"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_5");
-        });
-    </script>
-</div>
-
-<div id="texto_6">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542,108785468/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_6"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_6");
-        });
-    </script>
-</div>
-
-<div id="texto_7">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542,108785468/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_7"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_7");
-        });
-    </script>
-</div>
-
-<div id="texto_8">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542,108785468/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_8"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_8");
-        });
-    </script>
-</div>
-
-<div id="texto_9">
-    <script>
-        var el = document.body || document.documentElement,
-            wd = el.clientWidth || window.innerWidth;
-        googletag.cmd.push(function () {
-            window.googletag = window.googletag || { cmd: [] };
-            googletag.cmd.push(function () {
-                googletag
-                    .defineSlot(
-                        "/7542,108785468/parceiros/amomeupet",
-                        [[300, 250]],
-                        "texto_9"
-                    )
-                    .addService(googletag.pubads())
-                    .setTargeting("pos", "island")
-                    .setTargeting("context", "principal")
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.display("texto_9");
-        });
-    </script>
-</div>
-
-<!-- 320x50 AMP -->
-<amp-ad width="320" height="50" type="doubleclick" data-slot="/7542/parceiros/amomeupet" data-multi-size="300x50"
-data-lazy-fetch="true" data-loading-strategy="1" data-enable-refresh="45">
-</amp-ad>
-
-
-    <!-- 320x50 Sticky AMP -->
-    <amp-sticky-ad layout="nodisplay">
-        <amp-ad width="320" height="50" type="doubleclick" data-slot="/7542/parceiros/amomeupet"
-            data-enable-refresh="45">
-        </amp-ad>
-    </amp-sticky-ad>
-
-        <!-- 300x250 AMP 9-->
-    <amp-ad width="300" height="250" type="doubleclick" data-slot="/7542/parceiros/amomeupet" data-multi-size="300x250"
-        data-lazy-fetch="true" data-loading-strategy="1" data-enable-refresh="45">
-    </amp-ad>
 <body>
 
+
+    <div id="header">
+        <script>
+            var el = document.body || document.documentElement,
+                wd = el.clientWidth || window.innerWidth;
+            var d_header;
+            switch (true) {
+                case (wd < 768):
+                    d_header = [[320, 100]];
+                    break;
+                default:
+                    d_header = [[970, 250]];
+            }
+            googletag.cmd.push(function () {
+                window.googletag = window.googletag || { cmd: [] };
+                googletag.cmd.push(function () {
+                    googletag
+                        .defineSlot(
+                            "23055443421/broto/home",
+                            d_header,
+                            "header"
+                        )
+                        .addService(googletag.pubads())
+                        .setTargeting("pos", "topo")
+                        .setTargeting("pagina", "home");
+                    googletag.pubads().enableSingleRequest();
+                    googletag.enableServices();
+                });
+                googletag.display("header");
+            });
+        </script>
+      </div>
 </body>
 
 </html>
