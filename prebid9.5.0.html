@@ -1,0 +1,114 @@
+<script>
+    window.googletag = window.googletag || { cmd: [] };
+  
+    var anchor_slot;
+    var REFRESH_KEY = 'refresh';
+    var REFRESH_VALUE = 'true';
+
+    googletag.cmd.push(function () {
+        //Size mapping
+        var mapping_home_1 = googletag.sizeMapping()
+            .addSize([0, 0], [[300, 250], [200, 200], [336, 280], [250, 250]])
+            //.addSize([980, 200], [[970, 250], [970, 90], [728, 90]])
+            .build();
+
+        googletag.defineSlot('44585206/home_320x50_01', [[300, 250]], 'home_320x50_01')
+            .defineSizeMapping(mapping_home_1)
+            .setTargeting(REFRESH_KEY, REFRESH_VALUE)
+            .setTargeting('refreshed_slot', 'false')
+            .addService(googletag.pubads());
+      
+        googletag.defineSlot('44585206/home_320x50_02', [[300, 250]], 'home_320x50_02')
+            .defineSizeMapping(mapping_home_1)
+            .setTargeting(REFRESH_KEY, REFRESH_VALUE)
+            .setTargeting('refreshed_slot', 'false')
+            .addService(googletag.pubads());
+      
+        googletag.defineSlot('44585206/home_320x50_03', [[300, 250]], 'home_320x50_03')
+            .defineSizeMapping(mapping_home_1)
+            .setTargeting(REFRESH_KEY, REFRESH_VALUE)
+            .setTargeting('refreshed_slot', 'false')
+            .addService(googletag.pubads());
+      
+        googletag.defineSlot('44585206/home_320x50_04', [[300, 250]], 'home_320x50_04')
+            .defineSizeMapping(mapping_home_1)
+            .setTargeting(REFRESH_KEY, REFRESH_VALUE)
+            .setTargeting('refreshed_slot', 'false')
+            .addService(googletag.pubads());
+      
+        googletag.defineSlot('44585206/home_320x50_05', [[300, 250]], 'home_320x50_05')
+            .defineSizeMapping(mapping_home_1)
+            .setTargeting(REFRESH_KEY, REFRESH_VALUE)
+            .setTargeting('refreshed_slot', 'false')
+            .addService(googletag.pubads());
+      
+        googletag.defineSlot('44585206/home_320x50_06', [[300, 250]], 'home_320x50_06')
+            .defineSizeMapping(mapping_home_1)
+            .setTargeting(REFRESH_KEY, REFRESH_VALUE)
+            .setTargeting('refreshed_slot', 'false')
+            .addService(googletag.pubads());
+      
+        googletag.defineSlot('44585206/home_320x50_07', [[300, 250]], 'home_320x50_07')
+            .defineSizeMapping(mapping_home_1)
+            .setTargeting(REFRESH_KEY, REFRESH_VALUE)
+            .setTargeting('refreshed_slot', 'false')
+            .addService(googletag.pubads());
+
+        googletag.defineSlot('44585206/home_320x50_08', [[300, 250]], 'home_320x50_08')
+            .defineSizeMapping(mapping_home_1)
+            .setTargeting(REFRESH_KEY, REFRESH_VALUE)
+            .setTargeting('refreshed_slot', 'false')
+            .addService(googletag.pubads());
+
+        anchor_slot = googletag.defineOutOfPageSlot('/5235195/correio24h/under-banner', googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR);
+
+        if(anchor_slot){
+            anchor_slot.setTargeting(REFRESH_KEY, REFRESH_VALUE).setTargeting('refreshed_slot', 'false').addService(googletag.pubads());
+        } else {
+            console.log("Anchor not loaded");
+        }
+
+        var SECONDS_TO_WAIT_AFTER_VIEWABILITY = 30;
+        googletag.pubads().addEventListener('impressionViewable', function (event) {
+            var slot = event.slot;
+            if(slot.getTargeting(REFRESH_KEY).indexOf(REFRESH_VALUE) > -1) {
+                slot.setTargeting('refreshed_slot', 'true');
+                setTimeout(function () {
+                    googletag.pubads().refresh([slot]);
+                }, SECONDS_TO_WAIT_AFTER_VIEWABILITY * 1000);
+            }
+        });
+
+        googletag.pubads().enableLazyLoad({
+            fetchMarginPercent: 100,
+            renderMarginPercent: 100,
+            mobileScaling: 2.0
+        });
+
+        googletag.pubads().set('page_url', '');
+        googletag.pubads().setTargeting('Gtm', 'true');
+        googletag.pubads().setCentering(true);
+        googletag.enableServices();
+
+        googletag.display(anchor_slot);
+    });
+
+    function appendAd(adUnitID) {
+        var existingDiv = document.getElementById(adUnitID);
+        
+        if (existingDiv) {
+            googletag.cmd.push(function () {
+                googletag.display(adUnitID);
+            });
+        }
+    }
+
+    appendAd('home_320x50_01');
+    appendAd('home_320x50_02');
+    appendAd('home_320x50_03');
+    appendAd('home_320x50_04');
+    appendAd('home_320x50_05');
+    appendAd('home_320x50_06');
+    appendAd('home_320x50_07');
+    appendAd('home_320x50_08');
+</script>

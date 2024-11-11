@@ -1,50 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <title>Document</title>
+    <title>Wayback Machine Search</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-
-
-
 <body>
-
-
-    <div id="header">
-        <script>
-            var el = document.body || document.documentElement,
-                wd = el.clientWidth || window.innerWidth;
-            var d_header;
-            switch (true) {
-                case (wd < 768):
-                    d_header = [[320, 100]];
-                    break;
-                default:
-                    d_header = [[970, 250]];
-            }
-            googletag.cmd.push(function () {
-                window.googletag = window.googletag || { cmd: [] };
-                googletag.cmd.push(function () {
-                    googletag
-                        .defineSlot(
-                            "23055443421/broto/home",
-                            d_header,
-                            "header"
-                        )
-                        .addService(googletag.pubads())
-                        .setTargeting("pos", "topo")
-                        .setTargeting("pagina", "home");
-                    googletag.pubads().enableSingleRequest();
-                    googletag.enableServices();
-                });
-                googletag.display("header");
-            });
-        </script>
-      </div>
+    <div class="container">
+        <h1>Buscador Wayback Machine</h1>
+        <input type="text" id="urlInput" placeholder="Digite a URL">
+        <button id="searchBtn">Buscar</button>
+        <div id="results"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
-
 </html>
