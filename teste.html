@@ -1,0 +1,120 @@
+!
+<script>
+    // Criar o estilo dinâmico para o carrossel
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .carousel-container {
+        width: 100%;
+        max-width: 300px;
+        overflow: hidden;
+        position: relative;
+        margin: auto;
+      }
+      .carousel-slides {
+        display: flex;
+        transition: transform 0.5s ease;
+        width: 300%;
+      }
+      .carousel-slide {
+        width: 100%;
+        flex: 1 0 100%; 
+      }
+      .carousel-slide div {
+        width: 100%;
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+        color: #333;
+        font-size: 24px;
+      }
+      .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        color: white;
+        border: 1px solid #fff;
+        border-radius: 15%;
+        font-size: 20px;
+        padding: 5px;
+        cursor: pointer;
+        z-index: 10;
+      }
+      .carousel-button.prev {
+        left: -3px;
+      }
+      .carousel-button.next {
+        right: -3px;
+      }
+    `;
+    document.head.appendChild(style);
+  
+    // Criar a estrutura HTML do carrossel
+    const carouselContainer = document.createElement('div');
+    carouselContainer.className = 'carousel-container';
+    
+    const carouselSlides = document.createElement('div');
+    carouselSlides.className = 'carousel-slides';
+  
+    const slidesContent = [
+      '<div id="pub1">1</div>',
+      '<div id="pub2">2</div>',
+      '<div id="pub3">3</div>'
+    ];
+  
+    slidesContent.forEach(content => {
+      const slide = document.createElement('div');
+      slide.className = 'carousel-slide';
+      slide.innerHTML = content;
+      carouselSlides.appendChild(slide);
+    });
+  
+    carouselContainer.appendChild(carouselSlides);
+  
+    // Criar os botões de navegação
+    const prevButton = document.createElement('button');
+    prevButton.className = 'carousel-button prev';
+    prevButton.innerHTML = '&#10094;';
+    prevButton.onclick = prevSlide;
+  
+    const nextButton = document.createElement('button');
+    nextButton.className = 'carousel-button next';
+    nextButton.innerHTML = '&#10095;';
+    nextButton.onclick = nextSlide;
+  
+    carouselContainer.appendChild(prevButton);
+    carouselContainer.appendChild(nextButton);
+  
+    // Adicionar o carrossel ao body
+    document.body.appendChild(carouselContainer);
+  
+    // Variável de controle do índice
+    let currentIndex = 0;
+  
+    // Função para mover para o slide anterior
+    function prevSlide() {
+      const slides = document.querySelector('.carousel-slides');
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : 2;
+      updateSlidePosition(slides);
+    }
+  
+    // Função para mover para o próximo slide
+    function nextSlide() {
+      const slides = document.querySelector('.carousel-slides');
+      currentIndex = (currentIndex < 2) ? currentIndex + 1 : 0;
+      updateSlidePosition(slides);
+    }
+  
+    // Atualizar a posição do carrossel com base no índice
+    function updateSlidePosition(slides) {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+  
+    // Auto Slide: Mudar automaticamente de slide a cada 3 segundos
+    setInterval(() => {
+      nextSlide();
+    }, 3000);
+  </script>
+  
