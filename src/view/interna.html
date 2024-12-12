@@ -493,17 +493,22 @@
     <amp-analytics type="tail" id="tail">
       <script type="application/json">
       {
-      "vars": {
-      "account": "TT-9964-3/CT-23",
-      "ttS": "valueS",
-      "ttT": "valueT",
-      "ttC": "valueC",
-      "ttU": "valueU",
-      "ttCA": "valueCA",
-      "ttE": "valueE",
-      "ttA": "valueA",
-      "ttG": "valueG"
-      }
+        "vars": {
+          "account": "TT-9964-3/CT-23"
+        },
+        "triggers": {
+          "click": {
+            "on": "click",
+            "selector": "#test1",
+            "request": "event",
+            "vars": {
+              "eventValue": "value1",
+              "eventCategory": "category1",
+              "eventAction": "action1",
+              "eventLabel": "label1"
+            }
+          }
+        }
       }
       </script>
       </amp-analytics>
@@ -732,25 +737,10 @@
               controle das senhas. Afinal, manter muitas senhas difíceis não é
               uma tarefa tão simples quanto pode parecer.
             </p>
-            <amp-ad
-              width="300"
-              height="250"
+            <amp-ad width="300" height="250"
               type="doubleclick"
-              data-slot="/7542/parceiros/dihcodigo">
-              <script type="application/json">
-                {
-                  "targeting": {
-                    "ttS": "valueS",
-                    "ttT": "valueT",
-                    "ttC": "valueC",
-                    "ttU": "valueU",
-                    "ttCA": "valueCA",
-                    "ttE": "valueE",
-                    "ttA": "valueA",
-                    "ttG": "valueG"
-                  }
-                }
-              </script>
+              data-slot="/7542,108785468/parceiros/amomeupet"
+              rtc-config="{"vendors": {"tail": {"ACCOUNT_ID": "TT-9964-3/CT-23"}}}">
             </amp-ad>
             <p>
               Em resumo, uma senha forte é uma medida extremamente importante
